@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
+    <style>
+        /* --- ACADEMIC MINIMALISM (REFINED V4 - FIXED IMAGES) --- */
+        :root {
+            --bg: #ffffff;
+            --text-primary: #111111;
+            --text-muted: #555555;
+            --accent-green: #157a54; 
+            --accent-red: #c1121f;
+            --accent-amber: #d97706;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, "Liberation Mono", monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Links */
+        a { color: var(--accent-green); text-decoration: none; transition: color 0.15s ease; }
+        a:hover { color: var(--text-primary); text-decoration: underline; }
+
+        /* Typography Hierarchy */
+        h1 { font-size: 1.8em; font-weight: 700; color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 5px; }
+        h2 { font-family: var(--font-mono); font-size: 1.05em; text-transform: uppercase; letter-spacing: 1px; color: var(--text-primary); margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid #eeeeee; padding-bottom: 5px; }
+        
+        .meta-mono { font-family: var(--font-mono); font-size: 0.85em; color: var(--text-muted); }
+
+        /* Timeline / Status Badges */
+        .status-badge {
+            font-family: var(--font-mono);
+            font-size: 0.8em;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+        .status-completed { color: var(--accent-green); }
+        .status-upcoming { color: var(--accent-amber); }
+        .status-artifact { color: var(--text-muted); }
+
+        /* Navigation */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 60px;
+            padding-bottom: 15px;
+        }
+        .nav-links { font-family: var(--font-mono); font-size: 0.9em; }
+        .nav-links span { color: #ccc; margin: 0 6px; }
+
+        /* Layout Grid */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 180px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .profile-wrapper { text-align: right; }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(10%);
+            border: 1px solid #ddd;
+        }
+
+        p { margin-bottom: 18px; text-align: justify; text-justify: inter-word; }
+        .notice-block { border-left: 2px solid var(--accent-red); padding-left: 15px; margin: 25px 0; font-style: italic; }
+
+        /* Lists & Bibliography */
+        ul { padding-left: 0; list-style: none; margin-bottom: 20px; }
+        li { margin-bottom: 20px; text-align: justify; padding-left: 20px; position: relative; }
+        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
+        .venue { font-family: var(--font-mono); font-size: 0.85em; color: var(--text-muted); display: block; margin-top: 4px; }
+
+        /* Fieldwork Logs (Gallery) */
+        .fieldwork-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        figure { background: #ffffff; border: 1px solid #eeeeee; padding: 6px; }
+        figure img { width: 100%; height: 190px; object-fit: cover; display: block; }
+        figcaption { font-family: var(--font-mono); font-size: 0.75em; color: var(--text-muted); padding-top: 8px; line-height: 1.4; }
+        
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 4px;
+            margin-bottom: 4px;
+        }
+
+        /* Footer */
+        footer { margin-top: 100px; padding-top: 20px; border-top: 1px solid #eeeeee; font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 30px 20px; }
+            .nav-container { flex-direction: column; gap: 15px; margin-bottom: 40px; }
+            .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+            .profile-wrapper { text-align: center; order: -1; }
+            .profile-img { width: 150px; height: 150px; }
+            .log-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+    <div class="nav-container">
+        <div>
+            <h1>Wiktor Wilkołaski</h1>
+            <div class="meta-mono">Tech Law & Cybersecurity Researcher</div>
+        </div>
+        <div class="nav-links">
+            <a href="#bio">Bio</a><span>/</span>
+            <a href="#agenda">Research</a><span>/</span>
+            <a href="#publications">Publications</a><span>/</span>
+            <a href="#fieldwork">Fieldwork</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        
+        <!-- INTRO SECTION -->
+        <div class="intro-grid" id="bio">
+            <div>
+                <p>
+                    I am an independent Deep Tech Law & Cybersecurity Researcher based in Warsaw, currently serving as V-CEO and Co-Founder at the <a href="https://orcid.org/0009-0003-7810-9073" target="_blank">"SAVE THE CLICK" Foundation</a>. My work operates at the high-friction interface of advanced cryptographic physics, national security paradigms, and international regulatory frameworks.
+                </p>
+                <p>
+                    My academic architecture is built on an <strong>Individually Accelerated Degree Pathway</strong> at the War Studies University, condensing a two-year standard legal curriculum into a single calendar year. This involves the concurrent execution of advanced modules spanning the 3rd, 4th, and 5th years of the long-cycle Master of Laws (LL.M.) program (maintaining top percentile academic standing, on track for summa cum laude). My development is structured within an individual mentoring framework focusing on state-level cyber capabilities, European Union digital legislation, and international legal tech strategy.
+                </p>
+                <div class="notice-block">
+                    <strong>Current Operations (2026):</strong> Awarded the Minister of National Defence Scholarship for significant academic achievements and the Tadeusz Kutrzeba Commemorative Medal for exceptional research excellence.
+                </div>
+            </div>
+            <div class="profile-wrapper">
+                <!-- PROFLE PICTURE: Tilburg Selfie -->
+                <img src="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg" alt="W. Wilkołaski" class="profile-img">
+            </div>
+        </div>
+
+        <!-- RESEARCH AGENDA -->
+        <h2 id="agenda">Core Research Agenda</h2>
+        <p>
+            Rather than analyzing retroactive case law, my research focus is predictive and stress-test-driven, concentrating on three primary pillars:
+        </p>
+        <ul>
+            <li>
+                <strong>Liability Based on Deterministic Risk:</strong> Formalizing legal standing and tort metrics for the "Harvest Now, Decrypt Later" (HNDL) exfiltration vector before physical decryption capabilities (Q-Day) materialize.
+            </li>
+            <li>
+                <strong>Distributed System Asymmetries:</strong> Analyzing the systemic gap between decentralized processing tech (e.g., Federated Machine Learning) and updated liability structures like the Revised Product Liability Directive (PLD).
+            </li>
+            <li>
+                <strong>Gaming Ecosystem Governance:</strong> Investigating the legal boundaries of aggressive kernel-level surveillance (Anti-Cheat systems), digital platform Terms of Service (ToS), and transnational e-sports jurisdictional governance. This vector is backed by firsthand experience as a former professional Fortnite athlete (Ranked #1 in Poland, #187 globally).
+            </li>
+        </ul>
+
+        <!-- PUBLICATIONS -->
+        <h2 id="publications">Selected Publications & Proceedings</h2>
+        
+        <div class="notice-block">
+            <strong>DOCUMENT ACCESS:</strong> Full texts and preprints of the manuscripts listed below will be indexed and made publicly available on this site upon final acceptance, official publication, or the expiration of publisher embargoes.
+        </div>
+
+        <ul>
+            <li>
+                <span class="status-badge status-upcoming">[ UPCOMING: JUL 2026 ]</span><br>
+                Badźmirowska-Masłowska K., <strong>Wilkołaski W.</strong>, "Quantum Cybercrime: Challenges in the Age of Advancing Quantum Computing Across the European Union, United States of America, and People's Republic of China." 
+                <span class="venue">Science of Cyber Security, Lecture Notes in Computer Science (LNCS), Springer Nature. [Double-Blind Peer-Reviewed]</span>
+            </li>
+            <li>
+                <span class="status-badge status-upcoming">[ UPCOMING: AUG 2026 ]</span><br>
+                <strong>Wilkołaski W.</strong>, "Reconstructing Liability in Distributed Architectures: The Revised Product Liability Directive vs. Federated Machine Learning."
+                <span class="venue">IFIP Summer School on Privacy and Data Management, KU Leuven. [Double-Blind Peer-Reviewed]</span>
+            </li>
+            <li>
+                <span class="status-badge status-upcoming">[ UPCOMING: SEPT 2026 ]</span><br>
+                <strong>Wilkołaski W.</strong> (Presenting Author), Badźmirowska-Masłowska K., "Quantum Cyberspace Bifurcation. A Comparative Analysis of Regulatory Approaches to Quantum Technologies."
+                <span class="venue">TPRC54: Research Conference on Communication, Information and Internet Policy, Washington DC. [Main Track / Extended Abstract Accepted]</span>
+            </li>
+            <li>
+                <span class="status-badge status-completed">[ COMPLETED: JUN 2026 - Full Paper Incoming ]</span><br>
+                <strong>Wilkołaski W.</strong>, "The 'Quantum Paradox' and 'Liability Based on Deterministic Risk': Examining Liability for Data Breach, Duty of Care, and Retroactivity in the EU, US, and PRC."
+                <span class="venue">Tilting Perspectives Conference 2026. Full Paper sent to the Technology and Regulation (TechReg) Special Issue. [Strong Accept]</span>
+            </li>
+            <li>
+                <span class="status-badge status-completed">[ ACCEPTED & (Would Be) PUBLISHED ]</span><br>
+                <strong>Wilkołaski W.</strong>, "Legal Lacunae - Modern Cyber Threats Targeting International Aviation Beyond the Scope of the Beijing Convention."
+                <span class="venue">Cybersecurity and Law Journal, 2026. [Accepted without changes]</span>
+            </li>
+        </ul>
+
+        <!-- FIELDWORK / DOCUMENTATION -->
+        <h2 id="fieldwork">Fieldwork Logs & Research Sites</h2>
+        <p class="meta-mono" style="margin-bottom: 15px;">// Verbatim visual evidence index (Warsaw / Tilburg / Wuhan)</p>
+        
+        <div class="fieldwork-grid">
+            
+            <figure>
+                <!-- ASzWoj formal suit photo -->
+                <img src="7f49b413-56c1-4697-8d78-47cd206cdba1.jpg" alt="War Studies University Conferment">
+                <figcaption>
+                    <div class="log-header">
+                        <strong>LOG_01: Warsaw, PL</strong>
+                        <span class="status-badge status-completed">[ COMPLETED ]</span>
+                    </div>
+                    War Studies University Club. Minister of National Defence Scholarship of the Tadeusz Kutrzeba Commemorative Medal.
+                </figcaption>
+            </figure>
+
+            <figure>
+                <!-- ASzWoj stage photo -->
+                <img src="FB_IMG_1781293672536.jpg" alt="Academic Ceremony Stage Warsaw">
+                <figcaption>
+                    <div class="log-header">
+                        <strong>LOG_02: Warsaw, PL</strong>
+                        <span class="status-badge status-completed">[ COMPLETED ]</span>
+                    </div>
+                    Official academic ceremony stage. Formal public recognition of accelerated research pathway and academic excellence.
+                </figcaption>
+            </figure>
+
+            <figure>
+                <!-- Medal close-up -->
+                <img src="PXL_20260611_091930951.jpg" alt="Tadeusz Kutrzeba Medal Artifact">
+                <figcaption>
+                    <div class="log-header">
+                        <strong>LOG_03: Warsaw, PL</strong>
+                        <span class="status-badge status-artifact">[ ARTIFACT DOC ]</span>
+                    </div>
+                    Documented artifact: Tadeusz Kutrzeba Commemorative Medal and official conferment act signed by the Rector (June 2026).
+                </figcaption>
+            </figure>
+
+            <figure>
+                <!-- Tilburg Flags -->
+                <img src="cea67a68-2a60-4e8e-8502-6e4363752fd8.jpg" alt="Tilburg University Campus Flags">
+                <figcaption>
+                    <div class="log-header">
+                        <strong>LOG_04: Tilburg, NL</strong>
+                        <span class="status-badge status-completed">[ COMPLETED ]</span>
+                    </div>
+                    Tilburg University Campus.
+                </figcaption>
+            </figure>
+
+            <figure>
+                <!-- Wuhan University Sign -->
+                <img src="0bb234e8-deb4-4fc0-8415-9d87b3a74d14.jpg" alt="Wuhan University Presentation Site">
+                <figcaption>
+                    <div class="log-header">
+                        <strong>LOG_05: Wuhan, PRC</strong>
+                        <span class="status-badge status-completed">[ COMPLETED ]</span>
+                    </div>
+                    Wuhan University School of Cyber Science and Engineering. SciSec International briefing site (August 2025).
+                </figcaption>
+            </figure>
+
+            <figure>
+                <!-- Wuhan NCC Base -->
+                <img src="1892521e-d1f9-4d83-9032-22a3ec06369b.jpg" alt="National Cybersecurity Base China">
+                <figcaption>
+                    <div class="log-header">
+                        <strong>LOG_06: Wuhan, PRC</strong>
+                        <span class="status-badge status-completed">[ COMPLETED ]</span>
+                    </div>
+                    National Cybersecurity Talent and Innovation Base (NCC). Science of Cybersecurity Conference (August 2025).
+                </figcaption>
+            </figure>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div>
+                Contact: <a href="mailto:wiktorwilkolaski73@gmail.com">wiktorwilkolaski73@gmail.com</a> | 
+                LinkedIn: <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank">wiktor-wilkolaski</a>
+            </div>
+            <div>
+                ORCID: <a href="https://orcid.org/0009-0003-7810-9073" target="_blank">0009-0003-7810-9073</a>
+            </div>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.9em; color: #999;">
+            Built with plain HTML/CSS. Clean academic engine optimization. Updated: June 2026.
+        </p>
+    </footer>
+
+</body>
+</html>
