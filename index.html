@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
+    
+    <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
+    <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
+    <meta property="og:type" content="website">
+
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
+    
+    <link rel="icon" type="image/jpeg" href="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +88,7 @@
         .status-artifact { color: var(--text-muted); }
 
         /* Navigation */
-        .nav-container {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
@@ -115,7 +122,7 @@
         .profile-img:hover, .profile-img:focus { 
             transform: translateY(-3px); 
             box-shadow: 6px 6px 0px rgba(0,0,0,0.08); 
-            outline: none; /* Zastępujemy domyślny kontur fokusu własnym cieniem dla estetyki */
+            outline: none; 
         }
 
         p { margin-bottom: 20px; text-align: justify; }
@@ -250,7 +257,7 @@
 
         @media (max-width: 768px) {
             body { padding: 30px 20px; }
-            .nav-container { flex-direction: column; gap: 15px; margin-bottom: 40px; }
+            .header-container { flex-direction: column; gap: 15px; margin-bottom: 40px; }
             .nav-links a { margin-left: 0; margin-right: 15px; }
             .intro-grid { grid-template-columns: 1fr; gap: 30px; }
             .profile-wrapper { text-align: left; order: -1; }
@@ -258,23 +265,33 @@
             .log-header { flex-direction: column; gap: 5px; }
             .footer-meta { text-align: left; } 
         }
+
+        /* Dostępność - wyłączenie animacji dla osób, które tego preferują w systemie */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="nav-container">
+    <header class="header-container">
         <div>
             <h1>Wiktor Wilkołaski<span class="blinking-cursor">_</span></h1>
             <div class="meta-mono">Tech Law & Cybersecurity Researcher</div>
         </div>
-        <div class="nav-links">
+        <nav class="nav-links">
             <a href="#bio">Bio</a>
             <a href="#experience">Experience</a>
             <a href="#agenda">Research</a>
             <a href="#publications">Publications</a>
             <a href="#fieldwork">Fieldwork</a>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <main>
         
@@ -496,7 +513,6 @@
                 overlay.classList.add('active');
                 overlay.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; 
-                // Zmiana focusu na przycisk zamykania dla lepszej dostępności klawiatury
                 setTimeout(() => closeBtn.focus(), 100);
             };
 
@@ -507,7 +523,6 @@
                 setTimeout(() => { imgElement.src = ''; }, 200); 
             };
 
-            // ZMIANA 3: Funkcja obsługująca otwarcie obrazka (używana przez kliknięcie i klawiaturę)
             const handleImageActivation = (e) => {
                 const src = e.target.src;
                 let captionHtml = '';
@@ -523,10 +538,8 @@
             };
 
             triggers.forEach(trigger => {
-                // Otwieranie myszką
                 trigger.addEventListener('click', handleImageActivation);
                 
-                // ZMIANA 3: Otwieranie klawiszem Enter (dla nawigacji klawiaturą)
                 trigger.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
                         handleImageActivation(e);
