@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- MODERN LEGAL-TECH MINIMALISM (V10 - ORIGIN STORY & DOWNLOAD BUTTON) --- */
+        /* --- MODERN LEGAL-TECH MINIMALISM --- */
         :root {
             --bg: #ffffff;
             --text-primary: #151515;
@@ -20,7 +26,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: 40px; /* Dodano dla lepszego odstępu przy przewijaniu do sekcji */
+            scroll-padding-top: 40px; 
         }
 
         body {
@@ -41,7 +47,6 @@
         /* Typography Hierarchy */
         h1 { font-family: var(--font-mono); font-size: 2em; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 5px; text-transform: uppercase; }
         
-        /* Animacja kursora dla subtelnego tech-klimatu */
         .blinking-cursor {
             font-weight: 400;
             color: var(--accent-green);
@@ -107,9 +112,10 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
         
-        .profile-img:hover { 
+        .profile-img:hover, .profile-img:focus { 
             transform: translateY(-3px); 
             box-shadow: 6px 6px 0px rgba(0,0,0,0.08); 
+            outline: none; /* Zastępujemy domyślny kontur fokusu własnym cieniem dla estetyki */
         }
 
         p { margin-bottom: 20px; text-align: justify; }
@@ -122,7 +128,7 @@
             background: #f9f9f9; 
         }
 
-        /* Buttons (Przeniesione ze stylów inline) */
+        /* Buttons */
         .download-buttons-container {
             margin-top: 40px; 
             margin-bottom: 60px; 
@@ -176,7 +182,7 @@
             overflow: hidden; 
         }
         
-        figure:hover { 
+        figure:hover, figure:focus-within { 
             border-color: var(--text-primary); 
             box-shadow: 4px 4px 0px rgba(0,0,0,0.05); 
         }
@@ -190,8 +196,9 @@
             transition: transform 0.4s ease;
         }
         
-        figure img:hover { 
+        figure img:hover, figure img:focus { 
             transform: scale(1.02); 
+            outline: none;
         }
         
         figcaption { font-family: var(--font-sans); font-size: 0.85em; color: var(--text-primary); padding-top: 12px; line-height: 1.5; }
@@ -223,7 +230,6 @@
         .lightbox-img { max-width: 90vw; max-height: 85vh; border: 1px solid var(--text-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .lightbox-caption-container { margin-top: 20px; max-width: 90vw; font-family: var(--font-mono); font-size: 0.85em; text-align: center; }
         
-        /* Zmiana tagu na button poprawia dostępność z klawiatury */
         .lightbox-close {
             position: absolute; top: 20px; right: 30px;
             font-family: var(--font-mono); font-size: 2rem; color: var(--text-primary); 
@@ -233,9 +239,9 @@
             border: none;
             padding: 10px;
         }
-        .lightbox-close:hover { transform: scale(1.1); }
+        .lightbox-close:hover, .lightbox-close:focus { transform: scale(1.1); outline: 2px dashed var(--text-primary); }
 
-        /* Footer Layout (Przeniesione ze stylów inline) */
+        /* Footer */
         footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #ddd; font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); line-height: 1.8; }
         .footer-layout { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
         .footer-meta { text-align: right; }
@@ -250,13 +256,13 @@
             .profile-wrapper { text-align: left; order: -1; }
             .profile-img { width: 140px; height: 140px; }
             .log-header { flex-direction: column; gap: 5px; }
-            .footer-meta { text-align: left; } /* Lepszy wygląd na telefonach */
+            .footer-meta { text-align: left; } 
         }
     </style>
 </head>
 <body>
 
-    <div class="nav-container">
+    <nav class="nav-container">
         <div>
             <h1>Wiktor Wilkołaski<span class="blinking-cursor">_</span></h1>
             <div class="meta-mono">Tech Law & Cybersecurity Researcher</div>
@@ -268,7 +274,7 @@
             <a href="#publications">Publications</a>
             <a href="#fieldwork">Fieldwork</a>
         </div>
-    </div>
+    </nav>
 
     <main>
         
@@ -290,7 +296,7 @@
                 </div>
             </div>
             <div class="profile-wrapper">
-                <img src="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg" alt="W. Wilkołaski" class="profile-img js-lightbox-trigger">
+                <img src="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg" alt="W. Wilkołaski" class="profile-img js-lightbox-trigger" tabindex="0">
             </div>
         </div>
 
@@ -374,7 +380,7 @@
                 [DOWNLOAD] Curriculum Vitae (.PDF)
             </a>
             
-            <a href="My Page File.pdf" download class="notice-block download-btn download-btn-accent">
+            <a href="My%20Page%20File.pdf" download class="notice-block download-btn download-btn-accent">
                 [DOWNLOAD] Full Academic & Professional Portfolio (.PDF)
             </a>
         </div>
@@ -385,7 +391,7 @@
         <div class="fieldwork-grid">
             
             <figure>
-                <img src="7f49b413-56c1-4697-8d78-47cd206cdba1.jpg" alt="War Studies University Conferment" class="js-lightbox-trigger">
+                <img src="7f49b413-56c1-4697-8d78-47cd206cdba1.jpg" alt="War Studies University Conferment" class="js-lightbox-trigger" loading="lazy" tabindex="0">
                 <figcaption>
                     <div class="log-header">
                         <strong>LOG_01: WARSAW, PL</strong>
@@ -396,7 +402,7 @@
             </figure>
 
             <figure>
-                <img src="FB_IMG_1781293672536.jpg" alt="Academic Ceremony Stage Warsaw" class="js-lightbox-trigger">
+                <img src="FB_IMG_1781293672536.jpg" alt="Academic Ceremony Stage Warsaw" class="js-lightbox-trigger" loading="lazy" tabindex="0">
                 <figcaption>
                     <div class="log-header">
                         <strong>LOG_02: WARSAW, PL</strong>
@@ -407,7 +413,7 @@
             </figure>
 
             <figure>
-                <img src="PXL_20260611_091930951.jpg" alt="Tadeusz Kutrzeba Medal Artifact" class="js-lightbox-trigger">
+                <img src="PXL_20260611_091930951.jpg" alt="Tadeusz Kutrzeba Medal Artifact" class="js-lightbox-trigger" loading="lazy" tabindex="0">
                 <figcaption>
                     <div class="log-header">
                         <strong>LOG_03: WARSAW, PL</strong>
@@ -418,7 +424,7 @@
             </figure>
 
             <figure>
-                <img src="cea67a68-2a60-4e8e-8502-6e4363752fd8.jpg" alt="Tilburg University Campus Flags" class="js-lightbox-trigger">
+                <img src="cea67a68-2a60-4e8e-8502-6e4363752fd8.jpg" alt="Tilburg University Campus Flags" class="js-lightbox-trigger" loading="lazy" tabindex="0">
                 <figcaption>
                     <div class="log-header">
                         <strong>LOG_04: TILBURG, NL</strong>
@@ -429,7 +435,7 @@
             </figure>
 
             <figure>
-                <img src="0bb234e8-deb4-4fc0-8415-9d87b3a74d14.jpg" alt="Wuhan University Presentation Site" class="js-lightbox-trigger">
+                <img src="0bb234e8-deb4-4fc0-8415-9d87b3a74d14.jpg" alt="Wuhan University Presentation Site" class="js-lightbox-trigger" loading="lazy" tabindex="0">
                 <figcaption>
                     <div class="log-header">
                         <strong>LOG_05: WUHAN, PRC</strong>
@@ -440,7 +446,7 @@
             </figure>
 
             <figure>
-                <img src="1892521e-d1f9-4d83-9032-22a3ec06369b.jpg" alt="National Cybersecurity Base China" class="js-lightbox-trigger">
+                <img src="1892521e-d1f9-4d83-9032-22a3ec06369b.jpg" alt="National Cybersecurity Base China" class="js-lightbox-trigger" loading="lazy" tabindex="0">
                 <figcaption>
                     <div class="log-header">
                         <strong>LOG_06: WUHAN, PRC</strong>
@@ -490,6 +496,8 @@
                 overlay.classList.add('active');
                 overlay.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; 
+                // Zmiana focusu na przycisk zamykania dla lepszej dostępności klawiatury
+                setTimeout(() => closeBtn.focus(), 100);
             };
 
             const closeLightbox = () => {
@@ -499,19 +507,30 @@
                 setTimeout(() => { imgElement.src = ''; }, 200); 
             };
 
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', (e) => {
-                    const src = e.target.src;
-                    let captionHtml = '';
-                    
-                    const parentFigure = e.target.closest('figure');
-                    if (parentFigure) {
-                        const figcaption = parentFigure.querySelector('figcaption');
-                        if (figcaption) {
-                            captionHtml = figcaption.innerHTML;
-                        }
+            // ZMIANA 3: Funkcja obsługująca otwarcie obrazka (używana przez kliknięcie i klawiaturę)
+            const handleImageActivation = (e) => {
+                const src = e.target.src;
+                let captionHtml = '';
+                
+                const parentFigure = e.target.closest('figure') || e.target.closest('.profile-wrapper');
+                if (parentFigure) {
+                    const figcaption = parentFigure.querySelector('figcaption');
+                    if (figcaption) {
+                        captionHtml = figcaption.innerHTML;
                     }
-                    openLightbox(src, captionHtml);
+                }
+                openLightbox(src, captionHtml);
+            };
+
+            triggers.forEach(trigger => {
+                // Otwieranie myszką
+                trigger.addEventListener('click', handleImageActivation);
+                
+                // ZMIANA 3: Otwieranie klawiszem Enter (dla nawigacji klawiaturą)
+                trigger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        handleImageActivation(e);
+                    }
                 });
             });
 
