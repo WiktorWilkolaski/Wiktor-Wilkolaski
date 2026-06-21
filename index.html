@@ -87,7 +87,7 @@
         .status-upcoming { color: var(--accent-amber); }
         .status-artifact { color: var(--text-muted); }
 
-        /* Navigation */
+        /* Navigation & Header */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -96,6 +96,27 @@
             padding-bottom: 20px;
             border-bottom: 2px solid var(--text-primary);
         }
+        
+        .header-badges {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+        .header-badge-link {
+            font-family: var(--font-mono);
+            font-size: 0.75em;
+            border: 1px solid var(--text-muted);
+            padding: 2px 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .header-badge-link:hover {
+            color: var(--bg);
+            background-color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
         .nav-links { font-family: var(--font-mono); font-size: 0.85em; }
         .nav-links a { border-bottom: none; margin-left: 15px; }
         .nav-links a:hover { background-color: transparent; color: var(--text-muted); text-decoration: line-through; }
@@ -156,6 +177,40 @@
 
         .download-btn-accent {
             border-left-color: var(--accent-green);
+        }
+
+        /* CTA Section */
+        .cta-container {
+            margin-top: 60px;
+            padding: 40px 30px;
+            border: 2px solid var(--text-primary);
+            text-align: center;
+            background-color: #fafafa;
+        }
+        .cta-container h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: none;
+            padding-bottom: 0;
+            text-align: center;
+        }
+        .cta-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: var(--text-primary);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-weight: bold;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--text-primary);
+            transition: all 0.2s ease;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--bg);
+            color: var(--text-primary);
         }
 
         /* Lists */
@@ -249,11 +304,10 @@
         .lightbox-close:hover, .lightbox-close:focus { transform: scale(1.1); outline: 2px dashed var(--text-primary); }
 
         /* Footer */
-        footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #ddd; font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); line-height: 1.8; }
+        footer { margin-top: 40px; padding-top: 30px; border-top: 1px solid #ddd; font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); line-height: 1.8; }
         .footer-layout { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
         .footer-meta { text-align: right; }
         .footer-copyright { margin-top: 30px; }
-        .footer-open-status { color: var(--text-primary); }
 
         @media (max-width: 768px) {
             body { padding: 30px 20px; }
@@ -266,7 +320,6 @@
             .footer-meta { text-align: left; } 
         }
 
-        /* Dostępność - wyłączenie animacji dla osób, które tego preferują w systemie */
         @media (prefers-reduced-motion: reduce) {
             *, ::before, ::after {
                 animation-duration: 0.01ms !important;
@@ -283,6 +336,11 @@
         <div>
             <h1>Wiktor Wilkołaski<span class="blinking-cursor">_</span></h1>
             <div class="meta-mono">Tech Law & Cybersecurity Researcher</div>
+            <div class="header-badges">
+                <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="Profil ORCID">
+                    [ ORCID Profile ]
+                </a>
+            </div>
         </div>
         <nav class="nav-links">
             <a href="#bio">Bio</a>
@@ -339,10 +397,10 @@
         </p>
         <ul>
             <li>
-                <strong>Liability Based on Deterministic Risk:</strong> Formalizing legal standing and tort metrics for the "Harvest Now, Decrypt Later" (HNDL) exfiltration vector before physical decryption capabilities (Q-Day) materialize.
+                <strong>Quantum Cyberspace Bifurcation & Geopolitical Power Dynamics:</strong> Analyzing how major global powers (EU, US, PRC, and Russia) navigate emergent quantum cryptographic threats (HNDL and TNFL). This research investigates the systemic fragmentation of global cyber-governance into distinct "quantum spheres of influence," contrasting Western models of decentralized private compliance with Eastern sovereign models of preemptive state control.
             </li>
             <li>
-                <strong>Distributed System Asymmetries:</strong> Analyzing the systemic gap between decentralized processing tech (e.g., Federated Machine Learning) and updated liability structures like the Revised Product Liability Directive (PLD).
+                <strong>Liability Allocation in Decentralized Architectures:</strong> Analyzing regulatory friction and the imputation of liability under the Revised Product Liability Directive (PLD) concerning distributed processing systems, specifically Federated Machine Learning.
             </li>
             <li>
                 <strong>Gaming Ecosystem Governance & Anti-Cheat Policies:</strong> Investigating the legal boundaries of aggressive kernel-level surveillance and digital platform Terms of Service (ToS).
@@ -387,7 +445,7 @@
             </li>
             <li>
                 <span class="status-badge status-completed">[ ACCEPTED, UPCOMING: SEPT 2026]</span><br>
-                <strong>Badźmirowska-Masłowska K., Wilkołaski W.</strong>"The UN Convention against cybercime. The legal challenges and dillemas."
+                <strong>Badźmirowska-Masłowska K., Wilkołaski W.</strong> "The UN Convention against cybercrime. The legal challenges and dilemmas."
                 <span class="venue"> EUROCRIM 2026, European Society of Criminology [Oral Presentation Acceptance].</span>
             </li>
         </ul>
@@ -474,6 +532,12 @@
             </figure>
         </div>
 
+        <section class="cta-container">
+            <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
+            <p>Actively seeking academic partnerships, joint research initiatives, and new professional opportunities at the intersection of (deep) tech and law.</p>
+            <a href="mailto:wiktor042004@gmail.com" class="cta-btn">> INIT CONNECTION</a>
+        </section>
+
     </main>
 
     <footer>
@@ -484,7 +548,6 @@
             </div>
             <div class="footer-meta">
                 <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer">0009-0003-7810-9073</a><br>
-                <span class="footer-open-status">Open for collaboration.</span>
             </div>
         </div>
         <p class="footer-copyright">
