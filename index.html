@@ -18,7 +18,10 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 40px; /* Dodano dla lepszego odstępu przy przewijaniu do sekcji */
+        }
 
         body {
             background-color: var(--bg);
@@ -119,6 +122,29 @@
             background: #f9f9f9; 
         }
 
+        /* Buttons (Przeniesione ze stylów inline) */
+        .download-buttons-container {
+            margin-top: 40px; 
+            margin-bottom: 60px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px;
+        }
+
+        .download-btn {
+            margin: 0; 
+            display: inline-block; 
+            font-weight: bold; 
+            text-decoration: none; 
+            border-left-color: var(--text-primary); 
+            color: var(--text-primary); 
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .download-btn-accent {
+            border-left-color: var(--accent-green);
+        }
+
         /* Lists */
         ul { padding-left: 0; list-style: none; margin-bottom: 30px; }
         li { margin-bottom: 20px; text-align: justify; padding-left: 25px; position: relative; }
@@ -196,14 +222,25 @@
         .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
         .lightbox-img { max-width: 90vw; max-height: 85vh; border: 1px solid var(--text-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .lightbox-caption-container { margin-top: 20px; max-width: 90vw; font-family: var(--font-mono); font-size: 0.85em; text-align: center; }
+        
+        /* Zmiana tagu na button poprawia dostępność z klawiatury */
         .lightbox-close {
             position: absolute; top: 20px; right: 30px;
-            font-family: var(--font-mono); font-size: 2rem; color: var(--text-primary); cursor: pointer; z-index: 1001;
+            font-family: var(--font-mono); font-size: 2rem; color: var(--text-primary); 
+            cursor: pointer; z-index: 1001;
             transition: transform 0.2s;
+            background: transparent;
+            border: none;
+            padding: 10px;
         }
         .lightbox-close:hover { transform: scale(1.1); }
 
+        /* Footer Layout (Przeniesione ze stylów inline) */
         footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid #ddd; font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); line-height: 1.8; }
+        .footer-layout { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .footer-meta { text-align: right; }
+        .footer-copyright { margin-top: 30px; }
+        .footer-open-status { color: var(--text-primary); }
 
         @media (max-width: 768px) {
             body { padding: 30px 20px; }
@@ -213,6 +250,7 @@
             .profile-wrapper { text-align: left; order: -1; }
             .profile-img { width: 140px; height: 140px; }
             .log-header { flex-direction: column; gap: 5px; }
+            .footer-meta { text-align: left; } /* Lepszy wygląd na telefonach */
         }
     </style>
 </head>
@@ -241,7 +279,7 @@
                     It all started with a raw curiosity during my professional E-sports career, which naturally evolved into a rigorous pursuit of deep tech law and cybersecurity. My core methodological approach is straightforward: identifying critical tech-legal friction points and engineering direct, actionable solutions for them.
                 </p>
                 <p>
-                    I am an independent Deep Tech Law & Cybersecurity Researcher based in Warsaw, currently serving as V-CEO and Co-Founder at the <a href="https://orcid.org/0009-0003-7810-9073" target="_blank">"SAVE THE CLICK" Foundation</a>. Operating at the intersection of jurisprudence, cybersecurity, and emerging technologies, my work focuses on defining the regulatory frontiers of the digital age, including Quantum and Decentralized Technologies.
+                    I am an independent Deep Tech Law & Cybersecurity Researcher based in Warsaw, currently serving as V-CEO and Co-Founder at the <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer">"SAVE THE CLICK" Foundation</a>. Operating at the intersection of jurisprudence, cybersecurity, and emerging technologies, my work focuses on defining the regulatory frontiers of the digital age, including Quantum and Decentralized Technologies.
                 </p>
                 <p>
                     My academic path is built on an <strong>Individually Accelerated Degree Pathway</strong> at the War Studies University, condensing a two-year standard legal curriculum into a single calendar year (maintaining top percentile academic standing, on track for summa cum laude). I emphasize the multijurisdictional analysis of the EU, US, and PRC, comparing their legal systems functionally to assess their preparedness in light of unprecedented technological development.
@@ -281,7 +319,7 @@
                 <strong>Liability Based on Deterministic Risk:</strong> Formalizing legal standing and tort metrics for the "Harvest Now, Decrypt Later" (HNDL) exfiltration vector before physical decryption capabilities (Q-Day) materialize.
             </li>
             <li>
-                <strong>Distributed Systems:</strong> Analyzing the gaps between decentralized processing tech (e.g., Federated Machine Learning) and amended liability frameworks, especially the Revised Product Liability Directive (PLD).
+                <strong>Distributed System Asymmetries:</strong> Analyzing the systemic gap between decentralized processing tech (e.g., Federated Machine Learning) and updated liability structures like the Revised Product Liability Directive (PLD).
             </li>
             <li>
                 <strong>Gaming Ecosystem Governance & Anti-Cheat Policies:</strong> Investigating the legal boundaries of aggressive kernel-level surveillance and digital platform Terms of Service (ToS).
@@ -331,12 +369,12 @@
             </li>
         </ul>
 
-        <div style="margin-top: 40px; margin-bottom: 60px; display: flex; flex-wrap: wrap; gap: 20px;">
-            <a href="CV_Na_Githuba.pdf" download class="notice-block" style="margin: 0; display: inline-block; font-weight: bold; text-decoration: none; border-left-color: var(--text-primary); color: var(--text-primary); transition: background-color 0.2s;">
+        <div class="download-buttons-container">
+            <a href="CV_Na_Githuba.pdf" download class="notice-block download-btn">
                 [DOWNLOAD] Curriculum Vitae (.PDF)
             </a>
             
-            <a href="My Page File.pdf" download class="notice-block" style="margin: 0; display: inline-block; font-weight: bold; text-decoration: none; border-left-color: var(--accent-green); color: var(--text-primary); transition: background-color 0.2s;">
+            <a href="My Page File.pdf" download class="notice-block download-btn download-btn-accent">
                 [DOWNLOAD] Full Academic & Professional Portfolio (.PDF)
             </a>
         </div>
@@ -416,23 +454,23 @@
     </main>
 
     <footer>
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+        <div class="footer-layout">
             <div>
-                <strong>Contact:</strong> <a href="mailto:wiktor042004.com">wiktor042004.com</a><br>
-                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank">wiktor-wilkolaski</a>
+                <strong>Contact:</strong> <a href="mailto:wiktor042004@gmail.com">wiktor042004@gmail.com</a><br>
+                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer">wiktor-wilkolaski</a>
             </div>
-            <div style="text-align: right;">
-                <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-7810-9073" target="_blank">0009-0003-7810-9073</a><br>
-                <span style="color: var(--text-primary);">Open for collaboration.</span>
+            <div class="footer-meta">
+                <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer">0009-0003-7810-9073</a><br>
+                <span class="footer-open-status">Open for collaboration.</span>
             </div>
         </div>
-        <p style="margin-top: 30px;">
+        <p class="footer-copyright">
             &copy; 2026 Wiktor Wilkołaski. Built with plain HTML/CSS.
         </p>
     </footer>
 
-    <div id="lightbox-overlay" class="lightbox-overlay">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Zamknij podgląd obrazu">&times;</button>
         <img src="" alt="Enlarged view" class="lightbox-img" id="lightbox-img">
         <div class="lightbox-caption-container" id="lightbox-caption"></div>
     </div>
@@ -450,11 +488,13 @@
                 imgElement.src = src;
                 captionElement.innerHTML = captionHtml || '';
                 overlay.classList.add('active');
+                overlay.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; 
             };
 
             const closeLightbox = () => {
                 overlay.classList.remove('active');
+                overlay.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = ''; 
                 setTimeout(() => { imgElement.src = ''; }, 200); 
             };
