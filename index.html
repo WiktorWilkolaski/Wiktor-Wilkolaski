@@ -36,20 +36,17 @@
             --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "Liberation Mono", monospace;
         }
 
-        /* --- DARK MODE --- */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #121212;
-                --surface-bg: #1e1e1e;
-                --overlay-bg: rgba(18, 18, 18, 0.98);
-                --text-primary: #e0e0e0;
-                --text-muted: #9e9e9e;
-                --border-color: #333333;
-                --border-subtle: #2a2a2a;
-                /* Jaśniejsze akcenty dla lepszej widoczności na ciemnym tle */
-                --accent-green: #4ade80; 
-                --accent-amber: #fbbf24;
-            }
+        /* --- DARK MODE (Aktywowany manualnie przez klasę z JS) --- */
+        body.dark-theme {
+            --bg: #121212;
+            --surface-bg: #1e1e1e;
+            --overlay-bg: rgba(18, 18, 18, 0.98);
+            --text-primary: #e0e0e0;
+            --text-muted: #9e9e9e;
+            --border-color: #333333;
+            --border-subtle: #2a2a2a;
+            --accent-green: #4ade80; 
+            --accent-amber: #fbbf24;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,6 +65,7 @@
             max-width: 960px;
             margin: 0 auto;
             padding: 60px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Płynne przejście motywów */
         }
 
         /* Utility Classes */
@@ -129,8 +127,9 @@
             margin-top: 12px;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap; /* Zabezpieczenie na wąskich ekranach */
         }
-        .header-badge-link {
+        .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
             font-size: 0.75em;
             border: 1px solid var(--text-muted);
@@ -138,8 +137,11 @@
             color: var(--text-muted);
             text-decoration: none;
             display: inline-block;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .header-badge-link:hover {
+        .header-badge-link:hover, .theme-toggle-btn:hover {
             color: var(--bg);
             background-color: var(--text-primary);
             border-color: var(--text-primary);
@@ -522,6 +524,10 @@
                 <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile">
                     [ ORCID Profile ]
                 </a>
+                <!-- Nowy przycisk do zmiany motywu -->
+                <button type="button" class="theme-toggle-btn js-theme-toggle" aria-label="Toggle Dark Mode" title="Switch Theme">
+                    [ THEME: LIGHT ]
+                </button>
             </div>
         </div>
         <nav class="nav-links">
@@ -815,13 +821,36 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
+            // --- Obsługa Trybu Ciemnego (Theme Toggle) ---
+            const themeToggleBtn = document.querySelector('.js-theme-toggle');
+            
+            // Sprawdzamy, co jest zapisane w pamięci przeglądarki
+            const savedTheme = localStorage.getItem('portfolio_theme');
+            
+            // Jeśli użytkownik wcześniej ustawił ciemny motyw, aplikujemy go
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeToggleBtn.textContent = '[ THEME: DARK ]';
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                
+                // Zapisujemy wybór i zmieniamy tekst na przycisku
+                if (document.body.classList.contains('dark-theme')) {
+                    localStorage.setItem('portfolio_theme', 'dark');
+                    themeToggleBtn.textContent = '[ THEME: DARK ]';
+                } else {
+                    localStorage.setItem('portfolio_theme', 'light');
+                    themeToggleBtn.textContent = '[ THEME: LIGHT ]';
+                }
+            });
+
             // --- E-mail Obfuscation (Ochrona przed spamem) ---
-            // Budowanie adresu na żywo, aby ukryć go przed botami
             const _u = 'wiktor042004';
             const _d = 'gmail.com';
             const secureEmail = _u + '@' + _d;
 
-            // Ustawienie atrybutów href w linkach pocztowych
             const mailLinks = document.querySelectorAll('.js-email-link');
             mailLinks.forEach(link => {
                 link.setAttribute('href', 'mailto:' + secureEmail);
@@ -830,7 +859,6 @@
                 }
             });
 
-            // Podpięcie kopiowania do schowka
             const copyButtons = document.querySelectorAll('.js-copy-btn');
             copyButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -852,7 +880,7 @@
                 });
             });
 
-            // --- Zamykanie długich szczegółów (Details) od dołu ---
+            // --- Zamykanie długich szczegółów (Details) ---
             const closeDetailsBtns = document.querySelectorAll('.js-close-details');
             closeDetailsBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
