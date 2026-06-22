@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
+    <meta name="author" content="Wiktor Wilkołaski">
     
     <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
@@ -31,9 +32,11 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: 40px; 
+            /* Zwiększono padding dla lepszego "oddechu" nagłówków przy scrollowaniu z menu */
+            scroll-padding-top: 80px; 
         }
 
         body {
@@ -206,11 +209,77 @@
             letter-spacing: 0.5px;
             border: 1px solid var(--text-primary);
             transition: all 0.2s ease;
+            cursor: pointer;
         }
         .cta-btn:hover {
             transform: translateY(-2px);
             background-color: var(--bg);
             color: var(--text-primary);
+        }
+
+        /* Email Action Buttons */
+        .email-action-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .copy-btn-alt {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+        }
+        .copy-btn-alt:hover {
+            background-color: var(--text-primary);
+            color: var(--bg);
+        }
+
+        .copy-msg {
+            font-family: var(--font-mono);
+            font-size: 0.8em;
+            color: var(--bg);
+            background-color: var(--accent-green);
+            padding: 4px 8px;
+            position: absolute;
+            bottom: -35px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(-10px);
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .copy-msg.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-email-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .footer-copy-btn {
+            background: none;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            padding: 0 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .footer-copy-btn:hover {
+            background-color: var(--text-primary);
+            color: var(--bg);
+            border-color: var(--text-primary);
         }
 
         /* Lists */
@@ -318,6 +387,10 @@
             .profile-img { width: 140px; height: 140px; }
             .log-header { flex-direction: column; gap: 5px; }
             .footer-meta { text-align: left; } 
+            
+            .email-action-container { flex-direction: column; gap: 10px; }
+            .copy-msg { bottom: auto; top: 100%; transform: translateY(5px); }
+            .copy-msg.show { transform: translateY(10px); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -337,7 +410,7 @@
             <h1>Wiktor Wilkołaski<span class="blinking-cursor">_</span></h1>
             <div class="meta-mono">Tech Law & Cybersecurity Researcher</div>
             <div class="header-badges">
-                <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="Profil ORCID">
+                <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile">
                     [ ORCID Profile ]
                 </a>
             </div>
@@ -353,7 +426,7 @@
 
     <main>
         
-        <div class="intro-grid" id="bio">
+        <section class="intro-grid" id="bio">
             <div>
                 <p>
                     <span class="meta-mono" style="margin-right: 8px;">// ORIGIN</span>
@@ -371,171 +444,187 @@
                 </div>
             </div>
             <div class="profile-wrapper">
-                <img src="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg" alt="W. Wilkołaski" class="profile-img js-lightbox-trigger" tabindex="0">
+                <!-- Dodano role="button" i aria-label dla czytników ekranu -->
+                <img src="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg" alt="Portrait of Wiktor Wilkołaski" class="profile-img js-lightbox-trigger" tabindex="0" role="button" aria-label="Enlarge portrait">
             </div>
-        </div>
+        </section>
 
-        <h2 id="experience">Professional & Legislative Experience</h2>
-        <ul>
-            <li>
-                <strong>Government Legislation Centre (RCL)</strong><br>
-                Internship work involving complex Regulatory Impact Assessments for the National Cybersecurity System (KSC - UC32) and the Artificial Intelligence Systems Act (AI Act - UC71).
-            </li>
-            <li>
-                <strong>"SAVE THE CLICK" Foundation</strong><br>
-                Leading strategic initiatives for digital education, data security, and technological awareness as V-CEO.
-            </li>
-            <li>
-                <strong>Global Legal Hackathon 2025</strong><br>
-                Awarded the Mentors' Distinction for the conceptualization and development of the AI-driven "Safe Inheritance" application.
-            </li>
-        </ul>
+        <section id="experience">
+            <h2>Professional & Legislative Experience</h2>
+            <ul>
+                <li>
+                    <strong>Government Legislation Centre (RCL)</strong><br>
+                    Internship work involving complex Regulatory Impact Assessments for the National Cybersecurity System (KSC - UC32) and the Artificial Intelligence Systems Act (AI Act - UC71).
+                </li>
+                <li>
+                    <strong>"SAVE THE CLICK" Foundation</strong><br>
+                    Leading strategic initiatives for digital education, data security, and technological awareness as V-CEO.
+                </li>
+                <li>
+                    <strong>Global Legal Hackathon 2025</strong><br>
+                    Awarded the Mentors' Distinction for the conceptualization and development of the AI-driven "Safe Inheritance" application.
+                </li>
+            </ul>
+        </section>
 
-        <h2 id="agenda">Core Research Agenda & Technical Foundation</h2>
-        <p>
-            Rather than analyzing retroactive case law, my research focus is predictive and stress-test-driven, concentrating on three primary pillars:
-        </p>
-        <ul>
-            <li>
-				<strong>Comparative Architectures of Cyber-Governance & Sovereign Tech:</strong> Conducting comparative, multijurisdictional analyses of primary statutory sources, national security mandates, and regulatory baselines across leading global technological blocks. This focus involves executing functional legal assessments to identify regulatory lacunae in international conventions, stress-testing legal frameworks against emerging cyberthreats, and deconstructing their divergent regulatory approaches.
-			</li>
-            <li>
-                <strong>Liability Allocation in Decentralized Architectures:</strong> Analyzing regulatory friction and the imputation of liability under the Revised Product Liability Directive (PLD) concerning distributed processing systems, specifically Federated Machine Learning.
-            </li>
-            <li>
-                <strong>Gaming Ecosystem Governance & Anti-Cheat Policies:</strong> Investigating the legal boundaries of aggressive kernel-level surveillance and digital platform Terms of Service (ToS).
-                <span class="venue">
-                    TECHNICAL BACKGROUND: Former professional E-sports athlete. Ranks achieved: Top 10 EU (Rematch.gg); #1 PL, #12 EU, #60 Global PC (TRN Ranking); #3 Global (NOVA Project); Top #50 Global (3dAimTrainer Official Ranked). Former player for V1SION E-Sports, IMPAVE GAMING, ZGR E-sports, GFL, and Hater E-Sports.
-                </span>
-            </li>
-        </ul>
+        <section id="agenda">
+            <h2>Core Research Agenda & Technical Foundation</h2>
+            <p>
+                Rather than analyzing retroactive case law, my research focus is predictive and stress-test-driven, concentrating on three primary pillars:
+            </p>
+            <ul>
+                <li>
+                    <strong>Comparative Architectures of Cyber-Governance & Sovereign Tech:</strong> Conducting comparative, multijurisdictional analyses of primary statutory sources, national security mandates, and regulatory baselines across leading global technological blocks. This focus involves executing functional legal assessments to identify regulatory lacunae in international conventions, stress-testing legal frameworks against emerging cyberthreats, and deconstructing their divergent regulatory approaches.
+                </li>
+                <li>
+                    <strong>Liability Allocation in Decentralized Architectures:</strong> Analyzing regulatory friction and the imputation of liability under the Revised Product Liability Directive (PLD) concerning distributed processing systems, specifically Federated Machine Learning.
+                </li>
+                <li>
+                    <strong>Gaming Ecosystem Governance & Anti-Cheat Policies:</strong> Investigating the legal boundaries of aggressive kernel-level surveillance and digital platform Terms of Service (ToS).
+                    <span class="venue">
+                        TECHNICAL BACKGROUND: Former professional E-sports athlete. Ranks achieved: Top 10 EU (Rematch.gg); #1 PL, #12 EU, #60 Global PC (TRN Ranking); #3 Global (NOVA Project); Top #50 Global (3dAimTrainer Official Ranked). Former player for V1SION E-Sports, IMPAVE GAMING, ZGR E-sports, GFL, and Hater E-Sports.
+                    </span>
+                </li>
+            </ul>
+        </section>
 
-        <h2 id="publications">Selected Publications, Conferences & Proceedings</h2>
-        
-        <div class="notice-block">
-            <span class="meta-mono" style="display: block; margin-bottom: 5px;">// DOCUMENT ACCESS</span>
-            Full texts and preprints will be indexed upon final acceptance, official publication, or the expiration of publisher embargoes.
-        </div>
-
-        <ul>
-            <li>
-                <span class="status-badge status-upcoming">[ ACCEPTED, UPCOMING: 10 JUL 2026 ]</span><br>
-                Badźmirowska-Masłowska K., <strong>Wilkołaski W.</strong>, "Quantum Cybercrime: Challenges in the Age of Advancing Quantum Computing Across the European Union, United States of America, and People's Republic of China." 
-                <span class="venue">Science of Cyber Security, Lecture Notes in Computer Science (LNCS), Springer Nature. [Double-Blind Peer-Reviewed]</span>
-            </li>
-            <li>
-                <span class="status-badge status-upcoming">[ ACCEPTED EXTENDED ABSTRACT, UPCOMING: AUG 2026 ]</span><br>
-                <strong>Wilkołaski W.</strong>, "Reconstructing Liability in Distributed Architectures: The Revised Product Liability Directive vs. Federated Machine Learning."
-                <span class="venue">IFIP Summer School on Privacy and Data Management, KU Leuven. [Double-Blind Peer-Reviewed]</span>
-            </li>
-            <li>
-                <span class="status-badge status-upcoming">[ EXTENDED ABSTRACT ACCEPTED, PREPRINT UPCOMING: AUG 2026, PRESENTATION: SEPT 2026 ]</span><br>
-                <strong>Wilkołaski W.</strong> (Presenting Author), Badźmirowska-Masłowska K., "Quantum Cyberspace Bifurcation. A Comparative Analysis of Regulatory Approaches to Quantum Technologies."
-                <span class="venue">TPRC54: Research Conference on Communication, Information and Internet Policy, Washington DC. [Main Track / Extended Abstract Accepted]</span>
-            </li>
-            <li>
-                <span class="status-badge status-completed">[ COMPLETED: JUN 2026 ]</span><br>
-                <strong>Wilkołaski W.</strong>, "The 'Quantum Paradox' and 'Liability Based on Deterministic Risk': Examining Liability for Data Breach, Duty of Care, and Retroactivity in the EU, US, and PRC."
-                <span class="venue">Tilting Perspectives Conference 2026. Full Paper sent to the Technology and Regulation (TechReg) Special Issue. [Strong Accept]</span>
-            </li>
-            <li>
-                <span class="status-badge status-completed">[ ACCEPTED ]</span><br>
-                <strong>Wilkołaski W.</strong>, "Legal Lacunae - Modern Cyber Threats Targeting International Aviation Beyond the Scope of the Beijing Convention."
-                <span class="venue">Cybersecurity and Law Journal, 2026. [Accepted without changes]</span>
-            </li>
-            <li>
-                <span class="status-badge status-completed">[ ACCEPTED, UPCOMING: SEPT 2026]</span><br>
-                <strong>Badźmirowska-Masłowska K., Wilkołaski W.</strong> "The UN Convention against cybercrime. The legal challenges and dilemmas."
-                <span class="venue"> EUROCRIM 2026, European Society of Criminology [Oral Presentation Acceptance].</span>
-            </li>
-        </ul>
-
-        <div class="download-buttons-container">
-            <a href="CV_Na_Githuba.pdf" download class="notice-block download-btn">
-                [DOWNLOAD] Curriculum Vitae (.PDF)
-            </a>
+        <section id="publications">
+            <h2>Selected Publications, Conferences & Proceedings</h2>
             
-            <a href="My%20Page%20File.pdf" download class="notice-block download-btn download-btn-accent">
-                [DOWNLOAD] Full Academic & Professional Portfolio (.PDF)
-            </a>
-        </div>
+            <div class="notice-block">
+                <span class="meta-mono" style="display: block; margin-bottom: 5px;">// DOCUMENT ACCESS</span>
+                Full texts and preprints will be indexed upon final acceptance, official publication, or the expiration of publisher embargoes.
+            </div>
 
-        <h2 id="fieldwork">Fieldwork Logs & Research Sites</h2>
-        <p class="meta-mono" style="margin-bottom: 20px;">// Verbatim visual evidence index (Warsaw / Tilburg / Wuhan)</p>
-        
-        <div class="fieldwork-grid">
+            <ul>
+                <li>
+                    <span class="status-badge status-upcoming">[ ACCEPTED, UPCOMING: 10 JUL 2026 ]</span><br>
+                    Badźmirowska-Masłowska K., <strong>Wilkołaski W.</strong>, "Quantum Cybercrime: Challenges in the Age of Advancing Quantum Computing Across the European Union, United States of America, and People's Republic of China." 
+                    <span class="venue">Science of Cyber Security, Lecture Notes in Computer Science (LNCS), Springer Nature. [Double-Blind Peer-Reviewed]</span>
+                </li>
+                <li>
+                    <span class="status-badge status-upcoming">[ ACCEPTED EXTENDED ABSTRACT, UPCOMING: AUG 2026 ]</span><br>
+                    <strong>Wilkołaski W.</strong>, "Reconstructing Liability in Distributed Architectures: The Revised Product Liability Directive vs. Federated Machine Learning."
+                    <span class="venue">IFIP Summer School on Privacy and Data Management, KU Leuven. [Double-Blind Peer-Reviewed]</span>
+                </li>
+                <li>
+                    <span class="status-badge status-upcoming">[ EXTENDED ABSTRACT ACCEPTED, PREPRINT UPCOMING: AUG 2026, PRESENTATION: SEPT 2026 ]</span><br>
+                    <strong>Wilkołaski W.</strong> (Presenting Author), Badźmirowska-Masłowska K., "Quantum Cyberspace Bifurcation. A Comparative Analysis of Regulatory Approaches to Quantum Technologies."
+                    <span class="venue">TPRC54: Research Conference on Communication, Information and Internet Policy, Washington DC. [Main Track / Extended Abstract Accepted]</span>
+                </li>
+                <li>
+                    <span class="status-badge status-completed">[ COMPLETED: JUN 2026 ]</span><br>
+                    <strong>Wilkołaski W.</strong>, "The 'Quantum Paradox' and 'Liability Based on Deterministic Risk': Examining Liability for Data Breach, Duty of Care, and Retroactivity in the EU, US, and PRC."
+                    <span class="venue">Tilting Perspectives Conference 2026. Full Paper sent to the Technology and Regulation (TechReg) Special Issue. [Strong Accept]</span>
+                </li>
+                <li>
+                    <span class="status-badge status-completed">[ ACCEPTED ]</span><br>
+                    <strong>Wilkołaski W.</strong>, "Legal Lacunae - Modern Cyber Threats Targeting International Aviation Beyond the Scope of the Beijing Convention."
+                    <span class="venue">Cybersecurity and Law Journal, 2026. [Accepted without changes]</span>
+                </li>
+                <li>
+                    <span class="status-badge status-completed">[ ACCEPTED, UPCOMING: SEPT 2026]</span><br>
+                    <strong>Badźmirowska-Masłowska K., Wilkołaski W.</strong> "The UN Convention against cybercrime. The legal challenges and dilemmas."
+                    <span class="venue"> EUROCRIM 2026, European Society of Criminology [Oral Presentation Acceptance].</span>
+                </li>
+            </ul>
+
+            <div class="download-buttons-container">
+                <a href="CV_Na_Githuba.pdf" download class="notice-block download-btn">
+                    [DOWNLOAD] Curriculum Vitae (.PDF)
+                </a>
+                
+                <a href="My%20Page%20File.pdf" download class="notice-block download-btn download-btn-accent">
+                    [DOWNLOAD] Full Academic & Professional Portfolio (.PDF)
+                </a>
+            </div>
+        </section>
+
+        <section id="fieldwork">
+            <h2>Fieldwork Logs & Research Sites</h2>
+            <p class="meta-mono" style="margin-bottom: 20px;">// Verbatim visual evidence index (Warsaw / Tilburg / Wuhan)</p>
             
-            <figure>
-                <img src="7f49b413-56c1-4697-8d78-47cd206cdba1.jpg" alt="War Studies University Conferment" class="js-lightbox-trigger" loading="lazy" tabindex="0">
-                <figcaption>
-                    <div class="log-header">
-                        <strong>LOG_01: WARSAW, PL</strong>
-                        <span class="status-badge status-completed">[ VERIFIED ]</span>
-                    </div>
-                    War Studies University Club. Minister of National Defence Scholarship of the Tadeusz Kutrzeba Commemorative Medal.
-                </figcaption>
-            </figure>
+            <div class="fieldwork-grid">
+                <!-- Dodano role="button" i aria-label do każdego obrazu w galerii -->
+                <figure>
+                    <img src="7f49b413-56c1-4697-8d78-47cd206cdba1.jpg" alt="War Studies University Conferment Ceremony" class="js-lightbox-trigger" loading="lazy" tabindex="0" role="button" aria-label="Enlarge image">
+                    <figcaption>
+                        <div class="log-header">
+                            <strong>LOG_01: WARSAW, PL</strong>
+                            <span class="status-badge status-completed">[ VERIFIED ]</span>
+                        </div>
+                        War Studies University Club. Minister of National Defence Scholarship of the Tadeusz Kutrzeba Commemorative Medal.
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <img src="FB_IMG_1781293672536.jpg" alt="Academic Ceremony Stage Warsaw" class="js-lightbox-trigger" loading="lazy" tabindex="0">
-                <figcaption>
-                    <div class="log-header">
-                        <strong>LOG_02: WARSAW, PL</strong>
-                        <span class="status-badge status-completed">[ VERIFIED ]</span>
-                    </div>
-                    Official academic ceremony stage. Formal public recognition of accelerated research pathway and academic excellence.
-                </figcaption>
-            </figure>
+                <figure>
+                    <img src="FB_IMG_1781293672536.jpg" alt="Official academic ceremony stage in Warsaw" class="js-lightbox-trigger" loading="lazy" tabindex="0" role="button" aria-label="Enlarge image">
+                    <figcaption>
+                        <div class="log-header">
+                            <strong>LOG_02: WARSAW, PL</strong>
+                            <span class="status-badge status-completed">[ VERIFIED ]</span>
+                        </div>
+                        Official academic ceremony stage. Formal public recognition of accelerated research pathway and academic excellence.
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <img src="PXL_20260611_091930951.jpg" alt="Tadeusz Kutrzeba Medal Artifact" class="js-lightbox-trigger" loading="lazy" tabindex="0">
-                <figcaption>
-                    <div class="log-header">
-                        <strong>LOG_03: WARSAW, PL</strong>
-                        <span class="status-badge status-artifact">[ ARTIFACT ]</span>
-                    </div>
-                    Documented artifact: Tadeusz Kutrzeba Commemorative Medal and official conferment act signed by the Rector (June 2026).
-                </figcaption>
-            </figure>
+                <figure>
+                    <img src="PXL_20260611_091930951.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="js-lightbox-trigger" loading="lazy" tabindex="0" role="button" aria-label="Enlarge image">
+                    <figcaption>
+                        <div class="log-header">
+                            <strong>LOG_03: WARSAW, PL</strong>
+                            <span class="status-badge status-artifact">[ ARTIFACT ]</span>
+                        </div>
+                        Documented artifact: Tadeusz Kutrzeba Commemorative Medal and official conferment act signed by the Rector (June 2026).
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <img src="cea67a68-2a60-4e8e-8502-6e4363752fd8.jpg" alt="Tilburg University Campus Flags" class="js-lightbox-trigger" loading="lazy" tabindex="0">
-                <figcaption>
-                    <div class="log-header">
-                        <strong>LOG_04: TILBURG, NL</strong>
-                        <span class="status-badge status-completed">[ VERIFIED ]</span>
-                    </div>
-                    Tilburg University Campus. 9th Biennial Tilting Perspectives Conference.
-                </figcaption>
-            </figure>
+                <figure>
+                    <img src="cea67a68-2a60-4e8e-8502-6e4363752fd8.jpg" alt="Tilburg University Campus Flags" class="js-lightbox-trigger" loading="lazy" tabindex="0" role="button" aria-label="Enlarge image">
+                    <figcaption>
+                        <div class="log-header">
+                            <strong>LOG_04: TILBURG, NL</strong>
+                            <span class="status-badge status-completed">[ VERIFIED ]</span>
+                        </div>
+                        Tilburg University Campus. 9th Biennial Tilting Perspectives Conference.
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <img src="0bb234e8-deb4-4fc0-8415-9d87b3a74d14.jpg" alt="Wuhan University Presentation Site" class="js-lightbox-trigger" loading="lazy" tabindex="0">
-                <figcaption>
-                    <div class="log-header">
-                        <strong>LOG_05: WUHAN, PRC</strong>
-                        <span class="status-badge status-completed">[ VERIFIED ]</span>
-                    </div>
-                    Wuhan University School of Cyber Science and Engineering. SciSec International briefing site (August 2025).
-                </figcaption>
-            </figure>
+                <figure>
+                    <img src="0bb234e8-deb4-4fc0-8415-9d87b3a74d14.jpg" alt="Wuhan University Presentation Site for SciSec" class="js-lightbox-trigger" loading="lazy" tabindex="0" role="button" aria-label="Enlarge image">
+                    <figcaption>
+                        <div class="log-header">
+                            <strong>LOG_05: WUHAN, PRC</strong>
+                            <span class="status-badge status-completed">[ VERIFIED ]</span>
+                        </div>
+                        Wuhan University School of Cyber Science and Engineering. SciSec International briefing site (August 2025).
+                    </figcaption>
+                </figure>
 
-            <figure>
-                <img src="1892521e-d1f9-4d83-9032-22a3ec06369b.jpg" alt="National Cybersecurity Base China" class="js-lightbox-trigger" loading="lazy" tabindex="0">
-                <figcaption>
-                    <div class="log-header">
-                        <strong>LOG_06: WUHAN, PRC</strong>
-                        <span class="status-badge status-completed">[ VERIFIED ]</span>
-                    </div>
-                    National Cybersecurity Talent and Innovation Base (NCC). Science of Cybersecurity Conference (August 2025).
-                </figcaption>
-            </figure>
-        </div>
+                <figure>
+                    <img src="1892521e-d1f9-4d83-9032-22a3ec06369b.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="js-lightbox-trigger" loading="lazy" tabindex="0" role="button" aria-label="Enlarge image">
+                    <figcaption>
+                        <div class="log-header">
+                            <strong>LOG_06: WUHAN, PRC</strong>
+                            <span class="status-badge status-completed">[ VERIFIED ]</span>
+                        </div>
+                        National Cybersecurity Talent and Innovation Base (NCC). Science of Cybersecurity Conference (August 2025).
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
 
         <section class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and new professional opportunities at the intersection of (deep) tech and law.</p>
-            <a href="mailto:wiktor042004@gmail.com" class="cta-btn">> INIT CONNECTION</a>
+            
+            <div class="email-action-container">
+                <a href="mailto:wiktor042004@gmail.com" class="cta-btn">> INIT CONNECTION</a>
+                <button class="cta-btn copy-btn-alt" onclick="copyEmail('wiktor042004@gmail.com', 'cta-copy-msg')" aria-label="Copy Email Address" title="Copy Email">
+                    [ COPY EMAIL ]
+                </button>
+                <span id="cta-copy-msg" class="copy-msg">Email copied to clipboard!</span>
+            </div>
         </section>
 
     </main>
@@ -543,7 +632,13 @@
     <footer>
         <div class="footer-layout">
             <div>
-                <strong>Contact:</strong> <a href="mailto:wiktor042004@gmail.com">wiktor042004@gmail.com</a><br>
+                <strong>Contact:</strong> 
+                <span class="footer-email-container">
+                    <a href="mailto:wiktor042004@gmail.com">wiktor042004@gmail.com</a>
+                    <button class="footer-copy-btn" onclick="copyEmail('wiktor042004@gmail.com', 'footer-copy-msg')" aria-label="Copy Email" title="Copy Email">[C]</button>
+                    <span id="footer-copy-msg" class="copy-msg">Copied!</span>
+                </span>
+                <br>
                 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer">wiktor-wilkolaski</a>
             </div>
             <div class="footer-meta">
@@ -551,17 +646,33 @@
             </div>
         </div>
         <p class="footer-copyright">
-            &copy; 2026 Wiktor Wilkołaski. Built with plain HTML/CSS.
+            &copy; 2026 Wiktor Wilkołaski. Built with plain HTML/CSS/JS.
         </p>
     </footer>
 
-    <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog">
+    <!-- Dodano aria-modal="true" oraz aria-label dla okna pop-up -->
+    <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
         <button class="lightbox-close" id="lightbox-close" aria-label="Zamknij podgląd obrazu">&times;</button>
         <img src="" alt="Enlarged view" class="lightbox-img" id="lightbox-img">
         <div class="lightbox-caption-container" id="lightbox-caption"></div>
     </div>
 
     <script>
+        // Global function to copy email to clipboard
+        window.copyEmail = function(email, msgElementId) {
+            navigator.clipboard.writeText(email).then(() => {
+                const msgElement = document.getElementById(msgElementId);
+                msgElement.classList.add('show');
+                
+                setTimeout(() => {
+                    msgElement.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert("Could not copy email. Please copy it manually: " + email);
+            });
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             const overlay = document.getElementById('lightbox-overlay');
             const imgElement = document.getElementById('lightbox-img');
