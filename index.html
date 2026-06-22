@@ -267,10 +267,10 @@
             border-color: var(--text-primary);
         }
 
-        /* Lists */
-        ul { padding-left: 0; list-style: none; margin-bottom: 30px; }
-        li { margin-bottom: 20px; text-align: justify; padding-left: 25px; position: relative; }
-        li::before { content: "■"; position: absolute; left: 0; top: 1px; font-size: 0.6em; color: var(--text-primary); }
+        /* Zmiana na .content-list aby usunąć wyciek stylów */
+        .content-list { padding-left: 0; list-style: none; margin-bottom: 30px; }
+        .content-list li { margin-bottom: 20px; text-align: justify; padding-left: 25px; position: relative; }
+        .content-list li::before { content: "■"; position: absolute; left: 0; top: 1px; font-size: 0.6em; color: var(--text-primary); }
         
         .venue { 
             font-family: var(--font-mono); 
@@ -394,15 +394,17 @@
             margin-bottom: 12px;
             text-align: left;
         }
+        
+        /* Usunięto wyciek stylów do wewnętrznej listy */
         .log-details-content ul {
             margin-bottom: 12px;
+            padding-left: 20px;
+            list-style-type: disc;
         }
         .log-details-content li {
             margin-bottom: 8px;
-            padding-left: 20px;
         }
         
-        /* Animacja pojawiania się tekstu w details */
         details[open] .log-details-content {
             animation: fadeInDetails 0.4s ease-out forwards;
         }
@@ -539,7 +541,7 @@
 
         <section id="experience">
             <h2>Professional & Legislative Experience</h2>
-            <ul>
+            <ul class="content-list">
                 <li>
                     <strong>Government Legislation Centre (RCL)</strong><br>
                     Internship work involving complex Regulatory Impact Assessments for the National Cybersecurity System (KSC - UC32) and the Artificial Intelligence Systems Act (AI Act - UC71).
@@ -560,7 +562,7 @@
             <p>
                 Rather than analyzing retroactive case law, my research focus is predictive and stress-test-driven, concentrating on three primary pillars:
             </p>
-            <ul>
+            <ul class="content-list">
                 <li>
                     <strong>Comparative Architectures of Cyber-Governance & Sovereign Tech:</strong> Conducting comparative, multijurisdictional analyses of primary statutory sources, national security mandates, and regulatory baselines across leading global technological blocks. This focus involves executing functional legal assessments to identify regulatory lacunae in international conventions, stress-testing legal frameworks against emerging cyberthreats, and deconstructing their divergent regulatory approaches.
                 </li>
@@ -584,7 +586,7 @@
                 Full texts and preprints will be indexed upon final acceptance, official publication, or the expiration of publisher embargoes.
             </div>
 
-            <ul>
+            <ul class="content-list">
                 <li>
                     <span class="status-badge status-upcoming">[ ACCEPTED, UPCOMING: 10 JUL 2026 ]</span><br>
                     Badźmirowska-Masłowska K., <strong>Wilkołaski W.</strong>, "Quantum Cybercrime: Challenges in the Age of Advancing Quantum Computing Across the European Union, United States of America, and People's Republic of China." 
@@ -785,7 +787,7 @@
     </footer>
 
     <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
-        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Zamknij podgląd obrazu">&times;</button>
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&times;</button>
         <img src="" alt="Enlarged view" class="lightbox-img" id="lightbox-img">
         <div class="lightbox-caption-container" id="lightbox-caption"></div>
     </div>
@@ -793,7 +795,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Kopiowanie E-maila ---
             const copyButtons = document.querySelectorAll('.js-copy-btn');
             copyButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -816,7 +817,6 @@
                 });
             });
 
-            // --- Zamykanie długich szczegółów (Details) od dołu ---
             const closeDetailsBtns = document.querySelectorAll('.js-close-details');
             closeDetailsBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -824,10 +824,8 @@
                     if (detailsElement) {
                         detailsElement.removeAttribute('open');
                         
-                        // Znajdź sekcję zdjęcia (figure) i przewiń stronę do niej
                         const figureElement = detailsElement.closest('figure');
                         if (figureElement) {
-                            // Odejmujemy margines (np. 100px), żeby zdjęcie nie zjechało pod górną krawędź okna
                             const y = figureElement.getBoundingClientRect().top + window.scrollY - 100;
                             window.scrollTo({top: y, behavior: 'smooth'});
                         }
@@ -835,7 +833,6 @@
                 });
             });
 
-            // --- Logika Lightboxa ---
             const overlay = document.getElementById('lightbox-overlay');
             const imgElement = document.getElementById('lightbox-img');
             const captionElement = document.getElementById('lightbox-caption');
@@ -869,7 +866,6 @@
                 
                 const parentFigure = triggerBtn.closest('figure');
                 if (parentFigure) {
-                    // Szukamy tylko elementu .short-caption, żeby zignorować długie notatki
                     const shortCaption = parentFigure.querySelector('.short-caption');
                     if (shortCaption) {
                         captionHtml = shortCaption.innerHTML;
