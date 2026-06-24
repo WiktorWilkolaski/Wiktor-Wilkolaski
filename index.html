@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
     <meta name="author" content="Wiktor Wilkołaski">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
     
     <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/"> <meta property="og:image" content="wiktor-wilkolaski-preview.jpg"> <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
     
-    <link rel="icon" type="image/jpeg" href="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg">
+    <link rel="icon" type="image/jpeg" href="wiktor-wilkolaski-portrait.jpg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +25,7 @@
     <style>
         /* --- MODERN LEGAL-TECH MINIMALISM --- */
         :root {
-            /* Jasny motyw (domyślny) */
+            /* Light theme (default) */
             --bg: #ffffff;
             --surface-bg: #f9f9f9;
             --overlay-bg: rgba(255, 255, 255, 0.98);
@@ -36,7 +40,7 @@
             --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "Liberation Mono", monospace;
         }
 
-        /* --- DARK MODE (Aktywowany manualnie przez klasę z JS) --- */
+        /* --- DARK MODE (Activated manually via JS class) --- */
         body.dark-theme {
             --bg: #121212;
             --surface-bg: #1e1e1e;
@@ -53,7 +57,7 @@
         
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: 80px; 
+            scroll-padding-top: 140px; /* Adjusted for sticky header */
         }
 
         body {
@@ -64,8 +68,8 @@
             line-height: 1.65;
             max-width: 960px;
             margin: 0 auto;
-            padding: 60px 20px;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Płynne przejście motywów */
+            padding: 0 20px 60px 20px; /* Adjusted top padding due to sticky header */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
         }
 
         /* Utility Classes */
@@ -119,15 +123,21 @@
             justify-content: space-between;
             align-items: baseline;
             margin-bottom: 60px;
+            padding-top: 60px;
             padding-bottom: 20px;
             border-bottom: 2px solid var(--text-primary);
+            position: sticky;
+            top: 0;
+            background-color: var(--bg);
+            z-index: 100;
+            transition: background-color 0.3s ease;
         }
         
         .header-badges {
             margin-top: 12px;
             display: flex;
             gap: 10px;
-            flex-wrap: wrap; /* Zabezpieczenie na wąskich ekranach */
+            flex-wrap: wrap; /* Fallback for narrow screens */
         }
         .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
@@ -258,7 +268,7 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             transform: translateY(-10px);
             white-space: nowrap;
-            z-index: 10;
+            z-index: 50; /* Increased to prevent overlap */
         }
 
         .copy-msg.show {
@@ -290,7 +300,7 @@
             border-color: var(--text-primary);
         }
 
-        /* Lista główna */
+        /* Main list */
         .content-list { padding-left: 0; list-style: none; margin-bottom: 30px; }
         .content-list li { margin-bottom: 20px; text-align: justify; padding-left: 25px; position: relative; }
         .content-list li::before { content: "■"; position: absolute; left: 0; top: 1px; font-size: 0.6em; color: var(--text-primary); }
@@ -490,8 +500,8 @@
         .footer-copyright { margin-top: 30px; }
 
         @media (max-width: 768px) {
-            body { padding: 30px 20px; }
-            .header-container { flex-direction: column; gap: 15px; margin-bottom: 40px; }
+            body { padding: 0 20px 30px 20px; }
+            .header-container { flex-direction: column; gap: 15px; margin-bottom: 40px; padding-top: 30px; }
             .nav-links a { margin-left: 0; margin-right: 15px; }
             .intro-grid { grid-template-columns: 1fr; gap: 30px; }
             .profile-wrapper { text-align: left; order: -1; }
@@ -524,9 +534,8 @@
                 <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile">
                     [ ORCID Profile ]
                 </a>
-                <!-- Nowy przycisk do zmiany motywu -->
                 <button type="button" class="theme-toggle-btn js-theme-toggle" aria-label="Toggle Dark Mode" title="Switch Theme">
-                    [ THEME: LIGHT ]
+                    [ SWITCH TO DARK ]
                 </button>
             </div>
         </div>
@@ -560,7 +569,7 @@
             </div>
             <div class="profile-wrapper">
                 <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge portrait">
-                    <img src="0e40940c-37ee-4c28-bbb6-79bf4f233062.jpg" alt="Portrait of Wiktor Wilkołaski" class="profile-img">
+                    <img src="wiktor-wilkolaski-portrait.jpg" alt="Portrait of Wiktor Wilkołaski" class="profile-img">
                 </button>
             </div>
         </section>
@@ -651,11 +660,11 @@
             </ul>
 
             <div class="download-buttons-container">
-                <a href="CV_Na_Githuba.pdf" download class="notice-block download-btn">
+                <a href="wiktor-wilkolaski-cv.pdf" download class="notice-block download-btn">
                     [DOWNLOAD] Curriculum Vitae (.PDF)
                 </a>
                 
-                <a href="My%20Page%20File.pdf" download class="notice-block download-btn download-btn-accent">
+                <a href="wiktor-wilkolaski-portfolio-2026.pdf" download class="notice-block download-btn download-btn-accent">
                     [DOWNLOAD] Full Academic & Professional Portfolio (.PDF)
                 </a>
             </div>
@@ -669,7 +678,7 @@
                 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="7f49b413-56c1-4697-8d78-47cd206cdba1.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" loading="lazy">
+                        <img src="war-studies-university-warsaw-2026.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" loading="lazy">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -684,7 +693,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="FB_IMG_1781293672536.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" loading="lazy">
+                        <img src="academic-ceremony-warsaw-2026.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" loading="lazy">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -699,7 +708,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="PXL_20260611_091930951.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" loading="lazy">
+                        <img src="tadeusz-kutrzeba-medal-artifact.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" loading="lazy">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -714,7 +723,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="cea67a68-2a60-4e8e-8502-6e4363752fd8.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" loading="lazy">
+                        <img src="tilburg-university-conference.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" loading="lazy">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -729,7 +738,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="0bb234e8-deb4-4fc0-8415-9d87b3a74d14.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" loading="lazy">
+                        <img src="wuhan-university-scisec-2025.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" loading="lazy">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -766,7 +775,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="1892521e-d1f9-4d83-9032-22a3ec06369b.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" loading="lazy">
+                        <img src="wuhan-ncc-base-2025.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" loading="lazy">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -790,7 +799,7 @@
                 <button type="button" class="cta-btn copy-btn-alt js-copy-btn" data-msg-id="cta-copy-msg" aria-label="Copy Email Address" title="Copy Email">
                     [ COPY EMAIL ]
                 </button>
-                <span id="cta-copy-msg" class="copy-msg">Email copied to clipboard!</span>
+                <span id="cta-copy-msg" class="copy-msg" aria-live="polite">Email copied to clipboard!</span>
             </div>
         </section>
 
@@ -803,7 +812,7 @@
                 <span class="footer-email-container">
                     <a href="#" class="js-email-link js-email-text">Loading email...</a>
                     <button type="button" class="footer-copy-btn js-copy-btn" data-msg-id="footer-copy-msg" aria-label="Copy Email" title="Copy Email">[C]</button>
-                    <span id="footer-copy-msg" class="copy-msg">Copied!</span>
+                    <span id="footer-copy-msg" class="copy-msg" aria-live="polite">Copied!</span>
                 </span>
                 <br>
                 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer">wiktor-wilkolaski</a>
@@ -826,32 +835,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Obsługa Trybu Ciemnego (Theme Toggle) ---
+            // --- Theme Toggle Logic ---
             const themeToggleBtn = document.querySelector('.js-theme-toggle');
-            
-            // Sprawdzamy, co jest zapisane w pamięci przeglądarki
             const savedTheme = localStorage.getItem('portfolio_theme');
             
-            // Jeśli użytkownik wcześniej ustawił ciemny motyw, aplikujemy go
+            const updateThemeButton = (isDark) => {
+                themeToggleBtn.textContent = isDark ? '[ SWITCH TO LIGHT ]' : '[ SWITCH TO DARK ]';
+            };
+
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
-                themeToggleBtn.textContent = '[ THEME: DARK ]';
+                updateThemeButton(true);
+            } else {
+                updateThemeButton(false);
             }
 
             themeToggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-theme');
-                
-                // Zapisujemy wybór i zmieniamy tekst na przycisku
-                if (document.body.classList.contains('dark-theme')) {
-                    localStorage.setItem('portfolio_theme', 'dark');
-                    themeToggleBtn.textContent = '[ THEME: DARK ]';
-                } else {
-                    localStorage.setItem('portfolio_theme', 'light');
-                    themeToggleBtn.textContent = '[ THEME: LIGHT ]';
-                }
+                const isDark = document.body.classList.toggle('dark-theme');
+                localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light');
+                updateThemeButton(isDark);
             });
 
-            // --- E-mail Obfuscation (Ochrona przed spamem) ---
+            // --- E-mail Obfuscation ---
             const _u = 'wiktor042004';
             const _d = 'gmail.com';
             const secureEmail = _u + '@' + _d;
@@ -870,22 +875,26 @@
                     const currentBtn = e.currentTarget;
                     const msgElementId = currentBtn.getAttribute('data-msg-id');
                     
-                    navigator.clipboard.writeText(secureEmail).then(() => {
-                        const msgElement = document.getElementById(msgElementId);
-                        if(msgElement) {
-                            msgElement.classList.add('show');
-                            setTimeout(() => {
-                                msgElement.classList.remove('show');
-                            }, 2000);
-                        }
-                    }).catch(err => {
-                        console.error('Failed to copy text: ', err);
-                        alert("Could not copy email. Please copy it manually: " + secureEmail);
-                    });
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(secureEmail).then(() => {
+                            const msgElement = document.getElementById(msgElementId);
+                            if(msgElement) {
+                                msgElement.classList.add('show');
+                                setTimeout(() => {
+                                    msgElement.classList.remove('show');
+                                }, 2000);
+                            }
+                        }).catch(err => {
+                            console.error('Failed to copy text: ', err);
+                            alert("Could not copy email. Please copy it manually: " + secureEmail);
+                        });
+                    } else {
+                        alert("Clipboard unavailable. Please copy manually: " + secureEmail);
+                    }
                 });
             });
 
-            // --- Zamykanie długich szczegółów (Details) ---
+            // --- Expanding Details Close Button ---
             const closeDetailsBtns = document.querySelectorAll('.js-close-details');
             closeDetailsBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
@@ -895,21 +904,24 @@
                         
                         const figureElement = detailsElement.closest('figure');
                         if (figureElement) {
-                            const y = figureElement.getBoundingClientRect().top + window.scrollY - 100;
+                            const y = figureElement.getBoundingClientRect().top + window.scrollY - 150; // Adjusted for sticky header
                             window.scrollTo({top: y, behavior: 'smooth'});
                         }
                     }
                 });
             });
 
-            // --- Logika Lightboxa ---
+            // --- Lightbox Logic ---
             const overlay = document.getElementById('lightbox-overlay');
             const imgElement = document.getElementById('lightbox-img');
             const captionElement = document.getElementById('lightbox-caption');
             const closeBtn = document.getElementById('lightbox-close');
             const triggers = document.querySelectorAll('.js-lightbox-trigger');
+            
+            let lastFocusedElement = null;
 
-            const openLightbox = (src, captionHtml) => {
+            const openLightbox = (src, captionHtml, triggerElement) => {
+                lastFocusedElement = triggerElement;
                 imgElement.src = src;
                 captionElement.innerHTML = captionHtml || '';
                 overlay.classList.add('active');
@@ -923,6 +935,10 @@
                 overlay.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = ''; 
                 setTimeout(() => { imgElement.src = ''; }, 200); 
+                
+                if (lastFocusedElement) {
+                    setTimeout(() => lastFocusedElement.focus(), 200);
+                }
             };
 
             const handleImageActivation = (e) => {
@@ -941,7 +957,7 @@
                         captionHtml = shortCaption.innerHTML;
                     }
                 }
-                openLightbox(src, captionHtml);
+                openLightbox(src, captionHtml, triggerBtn);
             };
 
             triggers.forEach(trigger => {
