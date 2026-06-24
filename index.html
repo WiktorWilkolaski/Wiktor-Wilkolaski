@@ -11,7 +11,9 @@
     <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/"> <meta property="og:image" content="wiktor-wilkolaski-preview.jpg"> <meta property="og:image:width" content="1200">
+    <meta property="og:url" content="https://yourdomain.com/"> <!-- Update with your actual domain -->
+    <meta property="og:image" content="wiktor-wilkolaski-preview.jpg"> <!-- Update with a real 1200x630 image -->
+    <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
@@ -202,12 +204,13 @@
             border-left-color: var(--accent-green);
         }
 
+        /* Contact Section */
         .cta-container {
             margin-top: 60px;
             padding: 40px 30px;
             border: 2px solid var(--text-primary);
-            text-align: center;
             background-color: var(--surface-bg);
+            text-align: center;
         }
         .cta-container h2 {
             margin-top: 0;
@@ -216,9 +219,42 @@
             padding-bottom: 0;
             text-align: center;
         }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 30px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            background: var(--bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            resize: vertical;
+        }
+
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--text-primary);
+        }
+        
+        .contact-form input:focus-visible, 
+        .contact-form textarea:focus-visible {
+            outline: 2px dashed var(--accent-green);
+            outline-offset: 2px;
+        }
+
         .cta-btn {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 12px 30px;
             background-color: var(--text-primary);
             color: var(--bg);
@@ -236,68 +272,35 @@
             color: var(--text-primary);
         }
 
-        /* Email Action Elements */
-        .email-action-container {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            position: relative;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .copy-btn-alt {
-            background-color: transparent;
-            color: var(--text-primary);
-        }
-        .copy-btn-alt:hover {
+        /* Back to top button */
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background-color: var(--text-primary);
             color: var(--bg);
-        }
-
-        .copy-msg {
-            font-family: var(--font-mono);
-            font-size: 0.8em;
-            color: var(--bg);
-            background-color: var(--accent-green);
-            padding: 4px 8px;
-            position: absolute;
-            bottom: -35px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateY(-10px);
-            white-space: nowrap;
-            z-index: 50; /* Increased to prevent overlap */
-        }
-
-        .copy-msg.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .footer-email-container {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-        }
-
-        .footer-copy-btn {
-            background: none;
-            border: 1px solid var(--text-muted);
-            color: var(--text-muted);
-            cursor: pointer;
+            border: 1px solid var(--text-primary);
+            padding: 8px 15px;
             font-family: var(--font-mono);
             font-size: 0.85em;
-            padding: 0 5px;
-            transition: all 0.2s ease;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s, color 0.2s;
+            z-index: 99;
         }
         
-        .footer-copy-btn:hover {
-            background-color: var(--text-primary);
-            color: var(--bg);
-            border-color: var(--text-primary);
+        .back-to-top-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .back-to-top-btn:hover {
+            background-color: var(--bg);
+            color: var(--text-primary);
         }
 
         /* Main list */
@@ -508,10 +511,7 @@
             .profile-img { width: 140px; height: 140px; }
             .log-header { flex-direction: column; gap: 5px; }
             .footer-meta { text-align: left; } 
-            
-            .email-action-container { flex-direction: column; gap: 10px; }
-            .copy-msg { bottom: auto; top: 100%; transform: translateY(5px); }
-            .copy-msg.show { transform: translateY(10px); }
+            .back-to-top-btn { bottom: 20px; right: 20px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -545,6 +545,7 @@
             <a href="#agenda">Research</a>
             <a href="#publications">Publications</a>
             <a href="#fieldwork">Fieldwork</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -569,7 +570,7 @@
             </div>
             <div class="profile-wrapper">
                 <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge portrait">
-                    <img src="wiktor-wilkolaski-portrait.jpg" alt="Portrait of Wiktor Wilkołaski" class="profile-img">
+                    <img src="wiktor-wilkolaski-portrait.jpg" alt="Portrait of Wiktor Wilkołaski" class="profile-img" width="180" height="180" decoding="async">
                 </button>
             </div>
         </section>
@@ -678,7 +679,7 @@
                 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="war-studies-university-warsaw-2026.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" loading="lazy">
+                        <img src="war-studies-university-warsaw-2026.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -693,7 +694,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="academic-ceremony-warsaw-2026.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" loading="lazy">
+                        <img src="academic-ceremony-warsaw-2026.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -708,7 +709,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="tadeusz-kutrzeba-medal-artifact.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" loading="lazy">
+                        <img src="tadeusz-kutrzeba-medal-artifact.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -723,7 +724,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="tilburg-university-conference.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" loading="lazy">
+                        <img src="tilburg-university-conference.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -738,7 +739,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="wuhan-university-scisec-2025.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" loading="lazy">
+                        <img src="wuhan-university-scisec-2025.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -775,7 +776,7 @@
 
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image">
-                        <img src="wuhan-ncc-base-2025.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" loading="lazy">
+                        <img src="wuhan-ncc-base-2025.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -790,17 +791,17 @@
             </div>
         </section>
 
-        <section class="cta-container">
+        <section id="contact" class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and new professional opportunities at the intersection of (deep) tech and law.</p>
             
-            <div class="email-action-container">
-                <a href="#" class="cta-btn js-email-link">> INIT CONNECTION</a>
-                <button type="button" class="cta-btn copy-btn-alt js-copy-btn" data-msg-id="cta-copy-msg" aria-label="Copy Email Address" title="Copy Email">
-                    [ COPY EMAIL ]
-                </button>
-                <span id="cta-copy-msg" class="copy-msg" aria-live="polite">Email copied to clipboard!</span>
-            </div>
+            <!-- Replace YOUR_FORM_ID with the ID generated from formspree.io -->
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="text" name="name" aria-label="Your Name" placeholder="> YOUR NAME" required>
+                <input type="email" name="email" aria-label="Your Email" placeholder="> YOUR EMAIL" required>
+                <textarea name="message" aria-label="Your Message" placeholder="> YOUR MESSAGE OR INQUIRY" rows="4" required></textarea>
+                <button type="submit" class="cta-btn">> INIT CONNECTION</button>
+            </form>
         </section>
 
     </main>
@@ -808,12 +809,7 @@
     <footer>
         <div class="footer-layout">
             <div>
-                <strong>Contact:</strong> 
-                <span class="footer-email-container">
-                    <a href="#" class="js-email-link js-email-text">Loading email...</a>
-                    <button type="button" class="footer-copy-btn js-copy-btn" data-msg-id="footer-copy-msg" aria-label="Copy Email" title="Copy Email">[C]</button>
-                    <span id="footer-copy-msg" class="copy-msg" aria-live="polite">Copied!</span>
-                </span>
+                <strong>Contact:</strong> <a href="#contact">Send via contact form</a>
                 <br>
                 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer">wiktor-wilkolaski</a>
             </div>
@@ -825,6 +821,9 @@
             &copy; 2026 Wiktor Wilkołaski. Built with plain HTML/CSS/JS.
         </p>
     </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑ TOP</button>
 
     <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
         <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&times;</button>
@@ -856,44 +855,6 @@
                 updateThemeButton(isDark);
             });
 
-            // --- E-mail Obfuscation ---
-            const _u = 'wiktor042004';
-            const _d = 'gmail.com';
-            const secureEmail = _u + '@' + _d;
-
-            const mailLinks = document.querySelectorAll('.js-email-link');
-            mailLinks.forEach(link => {
-                link.setAttribute('href', 'mailto:' + secureEmail);
-                if (link.classList.contains('js-email-text')) {
-                    link.textContent = secureEmail;
-                }
-            });
-
-            const copyButtons = document.querySelectorAll('.js-copy-btn');
-            copyButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const currentBtn = e.currentTarget;
-                    const msgElementId = currentBtn.getAttribute('data-msg-id');
-                    
-                    if (navigator.clipboard && window.isSecureContext) {
-                        navigator.clipboard.writeText(secureEmail).then(() => {
-                            const msgElement = document.getElementById(msgElementId);
-                            if(msgElement) {
-                                msgElement.classList.add('show');
-                                setTimeout(() => {
-                                    msgElement.classList.remove('show');
-                                }, 2000);
-                            }
-                        }).catch(err => {
-                            console.error('Failed to copy text: ', err);
-                            alert("Could not copy email. Please copy it manually: " + secureEmail);
-                        });
-                    } else {
-                        alert("Clipboard unavailable. Please copy manually: " + secureEmail);
-                    }
-                });
-            });
-
             // --- Expanding Details Close Button ---
             const closeDetailsBtns = document.querySelectorAll('.js-close-details');
             closeDetailsBtns.forEach(btn => {
@@ -908,6 +869,24 @@
                             window.scrollTo({top: y, behavior: 'smooth'});
                         }
                     }
+                });
+            });
+
+            // --- Back to Top Logic ---
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
 
