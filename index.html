@@ -11,9 +11,7 @@
     <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/"> <!-- Update with your actual domain -->
-    <meta property="og:image" content="wiktor-wilkolaski-preview.jpg"> <!-- Update with a real 1200x630 image -->
-    <meta property="og:image:width" content="1200">
+    <meta property="og:url" content="https://yourdomain.com/"> <meta property="og:image" content="wiktor-wilkolaski-preview.jpg"> <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
@@ -220,36 +218,19 @@
             text-align: center;
         }
 
-        .contact-form {
-            max-width: 500px;
-            margin: 30px auto 0 auto;
+        .secure-contact-wrapper {
+            margin-top: 30px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 15px;
         }
 
-        .contact-form input, 
-        .contact-form textarea {
-            background: var(--bg);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            font-family: var(--font-mono);
-            font-size: 0.85em;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            resize: vertical;
-        }
-
-        .contact-form input:focus, 
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--text-primary);
-        }
-        
-        .contact-form input:focus-visible, 
-        .contact-form textarea:focus-visible {
-            outline: 2px dashed var(--accent-green);
-            outline-offset: 2px;
+        .contact-buttons-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .cta-btn {
@@ -270,6 +251,14 @@
             transform: translateY(-2px);
             background-color: var(--bg);
             color: var(--text-primary);
+        }
+
+        .contact-feedback {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            min-height: 20px;
+            color: var(--accent-green);
+            transition: opacity 0.3s ease;
         }
 
         /* Back to top button */
@@ -512,6 +501,8 @@
             .log-header { flex-direction: column; gap: 5px; }
             .footer-meta { text-align: left; } 
             .back-to-top-btn { bottom: 20px; right: 20px; }
+            .contact-buttons-row { flex-direction: column; width: 100%; }
+            .contact-buttons-row .cta-btn { width: 100%; text-align: center; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -795,13 +786,20 @@
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and new professional opportunities at the intersection of (deep) tech and law.</p>
             
-            <!-- Replace YOUR_FORM_ID with the ID generated from formspree.io -->
-            <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" aria-label="Your Name" placeholder="> YOUR NAME" required>
-                <input type="email" name="email" aria-label="Your Email" placeholder="> YOUR EMAIL" required>
-                <textarea name="message" aria-label="Your Message" placeholder="> YOUR MESSAGE OR INQUIRY" rows="4" required></textarea>
-                <button type="submit" class="cta-btn">> INIT CONNECTION</button>
-            </form>
+            <div class="secure-contact-wrapper">
+                <span class="meta-mono">// SECURE COMMUNICATION CHANNEL</span>
+                
+                <div class="contact-buttons-row">
+                    <button type="button" class="cta-btn js-action-mail" data-user="twoj.email" data-domain="twojadomena.com">
+                        > OPEN SECURE MAIL
+                    </button>
+                    <button type="button" class="cta-btn js-action-copy" data-user="twoj.email" data-domain="twojadomena.com">
+                        > COPY ADDRESS
+                    </button>
+                </div>
+                
+                <div class="contact-feedback js-contact-feedback"></div>
+            </div>
         </section>
 
     </main>
@@ -809,7 +807,7 @@
     <footer>
         <div class="footer-layout">
             <div>
-                <strong>Contact:</strong> <a href="#contact">Send via contact form</a>
+                <strong>Contact:</strong> <a href="#contact">Send Direct Inquiry</a>
                 <br>
                 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer">wiktor-wilkolaski</a>
             </div>
@@ -822,7 +820,6 @@
         </p>
     </footer>
 
-    <!-- Back to top button -->
     <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑ TOP</button>
 
     <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
@@ -956,6 +953,42 @@
                     closeLightbox();
                 }
             });
+
+            // --- Secure Contact Action Logic ---
+            const mailBtn = document.querySelector('.js-action-mail');
+            const copyBtn = document.querySelector('.js-action-copy');
+            const feedbackDisplay = document.querySelector('.js-contact-feedback');
+
+            // Pomocnicza funkcja łącząca e-mail
+            const getEmail = (element) => {
+                const user = element.getAttribute('data-user');
+                const domain = element.getAttribute('data-domain');
+                return `${user}@${domain}`;
+            };
+
+            if (mailBtn) {
+                mailBtn.addEventListener('click', function() {
+                    const email = getEmail(this);
+                    window.location.href = `mailto:${email}?subject=Research%20Collaboration%20Inquiry`;
+                });
+            }
+
+            if (copyBtn) {
+                copyBtn.addEventListener('click', async function() {
+                    const email = getEmail(this);
+                    try {
+                        await navigator.clipboard.writeText(email);
+                        feedbackDisplay.textContent = `[ STATUS: Address copied successfully ]`;
+                    } catch (err) {
+                        feedbackDisplay.textContent = `[ ERROR: Could not copy to clipboard ]`;
+                    }
+                    
+                    // Czyści powiadomienie po 3 sekundach
+                    setTimeout(() => {
+                        feedbackDisplay.textContent = '';
+                    }, 3000);
+                });
+            }
         });
     </script>
 
