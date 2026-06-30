@@ -27,7 +27,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- MODERN LEGAL-TECH MINIMALISM --- */
         :root {
             --bg: #ffffff;
             --surface-bg: #f9f9f9;
@@ -74,15 +73,9 @@
             transition: background-color 0.3s ease, color 0.3s ease; 
         }
 
-        /* Utility Classes */
-        .u-mr-small { margin-right: 8px; }
-        .u-mb-medium { margin-bottom: 20px; }
-        .u-block-mb-small { display: block; margin-bottom: 5px; }
-
         a { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--text-primary); transition: all 0.2s ease; }
         a:hover { color: var(--bg); background-color: var(--text-primary); }
 
-        /* Typography Hierarchy */
         h1 { font-family: var(--font-mono); font-size: 2em; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 5px; text-transform: uppercase; }
         
         .blinking-cursor {
@@ -116,7 +109,6 @@
             text-transform: uppercase;
         }
 
-        /* Badges */
         .status-badge {
             font-family: var(--font-mono);
             font-size: 0.75em;
@@ -129,7 +121,6 @@
         .status-upcoming { color: var(--accent-amber); }
         .status-artifact { color: var(--text-muted); }
 
-        /* Navigation & Header (Using CSS Nesting) */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -187,7 +178,6 @@
             }
         }
 
-        /* Layout Grid */
         .intro-grid {
             display: grid;
             grid-template-columns: 1fr 180px;
@@ -205,7 +195,9 @@
             background: var(--surface-bg); 
         }
 
-        /* Buttons & CTA */
+        .origin-label { margin-right: 8px; }
+        .notice-label { display: block; margin-bottom: 5px; }
+
         .download-buttons-container {
             margin-top: 40px; 
             margin-bottom: 60px; 
@@ -226,7 +218,6 @@
             &.download-btn-accent { border-left-color: var(--accent-green); }
         }
 
-        /* Contact Section (CSS Nesting) */
         .cta-container {
             margin-top: 60px;
             padding: 40px 30px;
@@ -287,7 +278,6 @@
             }
         }
 
-        /* Back to top button */
         .back-to-top-btn {
             position: fixed;
             bottom: 30px;
@@ -318,7 +308,6 @@
             }
         }
 
-        /* Main list */
         .content-list { 
             padding-left: 0; 
             list-style: none; 
@@ -351,7 +340,6 @@
             border-left: 1px solid var(--border-color); 
         }
 
-        /* Image Buttons & Profile (CSS Nesting) */
         .img-btn-wrapper {
             display: block;
             background: none;
@@ -388,13 +376,14 @@
             & .img-btn-wrapper { display: inline-block; width: auto; }
         }
 
-        /* Fieldwork Grid */
         .fieldwork-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
             margin-top: 25px;
         }
+
+        .fieldwork-desc { margin-bottom: 20px; }
         
         figure { 
             background: var(--bg); 
@@ -433,7 +422,6 @@
             margin-bottom: 8px;
         }
 
-        /* Expanding Details in Fieldwork (CSS Nesting) */
         .log-details {
             margin-top: 15px;
             font-size: 0.9em;
@@ -489,7 +477,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Native HTML5 Dialog Lightbox --- */
+        /* Lightbox */
         .lightbox-dialog {
             border: none;
             background: transparent;
@@ -501,7 +489,7 @@
 
             &::backdrop {
                 background-color: var(--overlay-bg);
-                backdrop-filter: blur(3px); /* Nowoczesny efekt rozmycia tła */
+                backdrop-filter: blur(3px);
                 animation: fadeInBackdrop 0.3s ease-out forwards;
             }
 
@@ -559,7 +547,6 @@
             }
         }
 
-        /* Footer */
         footer { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color); font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); line-height: 1.8; }
         .footer-layout { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
         .footer-meta { text-align: right; }
@@ -620,7 +607,7 @@
         <section class="intro-grid" id="bio">
             <div>
                 <p>
-                    <span class="meta-mono u-mr-small">// ORIGIN</span>
+                    <span class="meta-mono origin-label">// ORIGIN</span>
                     It all started with a raw curiosity during my professional E-sports career, which naturally evolved into a rigorous pursuit of deep tech law and cybersecurity. My core methodological approach is straightforward: identifying critical tech-legal friction points and engineering direct, actionable solutions for them.
                 </p>
                 <p>
@@ -630,7 +617,7 @@
                     My academic path is built on an <strong>Individually Accelerated Degree Pathway</strong> at the War Studies University, condensing a two-year standard legal curriculum into a single calendar year (maintaining top percentile academic standing, on track for summa cum laude). I emphasize the multijurisdictional analysis of the EU, US, and PRC, comparing their legal systems functionally to assess their preparedness in light of unprecedented technological development.
                 </p>
                 <div class="notice-block">
-                    <span class="meta-mono u-block-mb-small">// CURRENT OPERATIONS (2026)</span>
+                    <span class="meta-mono notice-label">// CURRENT OPERATIONS (2026)</span>
                     Awarded the Minister of National Defence Scholarship for significant academic achievements and the Tadeusz Kutrzeba Commemorative Medal for exceptional research excellence.
                 </div>
             </div>
@@ -674,7 +661,7 @@
                 <li>
                     <strong>Gaming Ecosystem Governance & Anti-Cheat Policies:</strong> Investigating the legal boundaries of aggressive kernel-level surveillance and digital platform Terms of Service (ToS).
                     <span class="venue">
-                        BACKGROUND: Former professional E-sports athlete. Ranks achieved: Top 10 EU (Rematch.gg); #1 PL, #12 EU, #60 Global PC (TRN Ranking); #3 Global (NOVA Project); Top #50 Global (3dAimTrainer Official Ranked). Former player for V1SION E-Sports, IMPAVE GAMING, ZGR E-sports, GFL, and Hater E-Sports.
+                        TECHNICAL BACKGROUND: Former professional E-sports athlete. Ranks achieved: Top 10 EU (Rematch.gg); #1 PL, #12 EU, #60 Global PC (TRN Ranking); #3 Global (NOVA Project); Top #50 Global (3dAimTrainer Official Ranked). Former player for V1SION E-Sports, IMPAVE GAMING, ZGR E-sports, GFL, and Hater E-Sports.
                     </span>
                 </li>
             </ul>
@@ -684,7 +671,7 @@
             <h2>Selected Publications, Conferences & Proceedings</h2>
             
             <div class="notice-block">
-                <span class="meta-mono u-block-mb-small">// DOCUMENT ACCESS</span>
+                <span class="meta-mono notice-label">// DOCUMENT ACCESS</span>
                 Full texts and preprints will be indexed upon final acceptance, official publication, or the expiration of publisher embargoes.
             </div>
 
@@ -739,7 +726,7 @@
 
         <section id="fieldwork">
             <h2>Fieldwork Logs & Research Sites</h2>
-            <p class="meta-mono u-mb-medium">// Verbatim visual evidence index (Warsaw / Tilburg / Wuhan)</p>
+            <p class="meta-mono fieldwork-desc">// Verbatim visual evidence index (Warsaw / Tilburg / Wuhan)</p>
             
             <div class="fieldwork-grid">
                 
@@ -904,15 +891,14 @@
     </dialog>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             
-            // --- Theme Toggle Logic ---
             const themeToggleBtn = document.querySelector('.js-theme-toggle');
             const savedTheme = localStorage.getItem('portfolio_theme');
             
-            const updateThemeButton = (isDark) => {
+            function updateThemeButton(isDark) {
                 themeToggleBtn.textContent = isDark ? '[ SWITCH TO LIGHT ]' : '[ SWITCH TO DARK ]';
-            };
+            }
 
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark-theme');
@@ -921,20 +907,17 @@
                 updateThemeButton(false);
             }
 
-            themeToggleBtn.addEventListener('click', () => {
+            themeToggleBtn.addEventListener('click', function() {
                 const isDark = document.body.classList.toggle('dark-theme');
                 localStorage.setItem('portfolio_theme', isDark ? 'dark' : 'light');
                 updateThemeButton(isDark);
             });
 
-            // --- Expanding Details Close Button ---
-            const closeDetailsBtns = document.querySelectorAll('.js-close-details');
-            closeDetailsBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.js-close-details').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
                     const detailsElement = e.target.closest('details');
                     if (detailsElement) {
                         detailsElement.removeAttribute('open');
-                        
                         const figureElement = detailsElement.closest('figure');
                         if (figureElement) {
                             const y = figureElement.getBoundingClientRect().top + window.scrollY - 150; 
@@ -944,10 +927,8 @@
                 });
             });
 
-            // --- Back to Top Logic ---
             const backToTopBtn = document.getElementById('back-to-top');
-            
-            window.addEventListener('scroll', () => {
+            window.addEventListener('scroll', function() {
                 if (window.scrollY > 400) {
                     backToTopBtn.classList.add('visible');
                 } else {
@@ -955,84 +936,69 @@
                 }
             });
 
-            backToTopBtn.addEventListener('click', () => {
+            backToTopBtn.addEventListener('click', function() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // --- Native Dialog Lightbox Logic ---
             const dialog = document.getElementById('lightbox-dialog');
             const imgWrapper = document.getElementById('lightbox-img-wrapper');
             const captionElement = document.getElementById('lightbox-caption');
             const closeBtn = document.getElementById('lightbox-close');
-            const triggers = document.querySelectorAll('.js-lightbox-trigger');
-            
             let lastFocusedElement = null;
 
-            const openLightbox = (src, captionHtml, triggerElement) => {
-                lastFocusedElement = triggerElement;
-                imgWrapper.innerHTML = `<img src="${src}" alt="Enlarged view" class="lightbox-img">`;
-                captionElement.innerHTML = captionHtml || '';
-                
-                document.body.style.overflow = 'hidden'; // Zablokowanie scrollowania tła
-                dialog.showModal(); // Natywna metoda otwierania
-            };
+            document.querySelectorAll('.js-lightbox-trigger').forEach(function(trigger) {
+                trigger.addEventListener('click', function(e) {
+                    const img = this.querySelector('img');
+                    if (!img) return;
 
-            const closeLightbox = () => {
-                dialog.close(); // Natywna metoda zamykania
-            };
-
-            const handleImageActivation = (e) => {
-                const triggerBtn = e.currentTarget;
-                const img = triggerBtn.querySelector('img');
-                
-                if (!img) return;
-
-                const src = img.src;
-                let captionHtml = '';
-                
-                const parentFigure = triggerBtn.closest('figure');
-                if (parentFigure) {
-                    const shortCaption = parentFigure.querySelector('.short-caption');
-                    if (shortCaption) {
-                        captionHtml = shortCaption.innerHTML;
+                    lastFocusedElement = this;
+                    let captionHtml = '';
+                    
+                    const parentFigure = this.closest('figure');
+                    if (parentFigure) {
+                        const shortCaption = parentFigure.querySelector('.short-caption');
+                        if (shortCaption) {
+                            captionHtml = shortCaption.innerHTML;
+                        }
                     }
-                }
-                openLightbox(src, captionHtml, triggerBtn);
-            };
 
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', handleImageActivation);
+                    imgWrapper.innerHTML = `<img src="${img.src}" alt="Enlarged view" class="lightbox-img">`;
+                    captionElement.innerHTML = captionHtml;
+                    
+                    document.body.style.overflow = 'hidden';
+                    dialog.showModal();
+                });
             });
 
-            closeBtn.addEventListener('click', closeLightbox);
+            closeBtn.addEventListener('click', function() {
+                dialog.close();
+            });
 
-            // Zamykanie przez kliknięcie w tło (backdrop)
-            dialog.addEventListener('click', (e) => {
+            dialog.addEventListener('click', function(e) {
                 if (e.target === dialog) {
-                    closeLightbox();
+                    dialog.close();
                 }
             });
 
-            // Czyszczenie po natywnym zamknięciu (np. przez klawisz Escape)
-            dialog.addEventListener('close', () => {
+            dialog.addEventListener('close', function() {
                 document.body.style.overflow = ''; 
-                setTimeout(() => { imgWrapper.innerHTML = ''; captionElement.innerHTML = ''; }, 200); 
+                setTimeout(function() { 
+                    imgWrapper.innerHTML = ''; 
+                    captionElement.innerHTML = ''; 
+                }, 200); 
                 
                 if (lastFocusedElement) {
                     lastFocusedElement.focus();
                 }
             });
 
-            // --- Secure Contact Action Logic ---
             const mailBtn = document.querySelector('.js-action-mail');
             const copyBtn = document.querySelector('.js-action-copy');
             const feedbackDisplay = document.querySelector('.js-contact-feedback');
 
-            const getEmail = (element) => {
-                const user = element.getAttribute('data-user');
-                const domain = element.getAttribute('data-domain');
-                return `${user}@${domain}`;
-            };
+            function getEmail(element) {
+                return element.getAttribute('data-user') + '@' + element.getAttribute('data-domain');
+            }
 
             if (mailBtn) {
                 mailBtn.addEventListener('click', function() {
@@ -1052,7 +1018,7 @@
                         feedbackDisplay.textContent = `[ ERROR: Could not copy to clipboard ]`;
                     }
                     
-                    setTimeout(() => {
+                    setTimeout(function() {
                         feedbackDisplay.textContent = '';
                     }, 3000);
                 });
