@@ -8,10 +8,14 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
     
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
+    
     <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, an independent Deep Tech Law & Cybersecurity Researcher.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.com/"> <meta property="og:image" content="wiktor-wilkolaski-preview.jpg"> <meta property="og:image:width" content="1200">
+    <meta property="og:url" content="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/"> 
+    <meta property="og:image" content="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/wiktor-wilkolaski-preview.jpg"> 
+    <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
@@ -57,7 +61,7 @@
         
         html { 
             scroll-behavior: smooth; 
-            scroll-padding-top: 140px; /* Adjusted for sticky header */
+            scroll-padding-top: 140px; 
         }
 
         body {
@@ -68,8 +72,8 @@
             line-height: 1.65;
             max-width: 960px;
             margin: 0 auto;
-            padding: 0 20px 60px 20px; /* Adjusted top padding due to sticky header */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+            padding: 0 20px 60px 20px; 
+            transition: background-color 0.3s ease, color 0.3s ease; 
         }
 
         /* Utility Classes */
@@ -103,6 +107,18 @@
         }
         
         .meta-mono { font-family: var(--font-mono); font-size: 0.85em; color: var(--text-muted); }
+        .accent-mono { font-family: var(--font-mono); font-size: 0.85em; color: var(--text-primary); font-weight: bold; }
+        
+        /* NOWA KLASA DLA DEWIZY */
+        .motto-text {
+            font-family: var(--font-mono);
+            font-size: 0.95em;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent-green);
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
 
         /* Badges */
         .status-badge {
@@ -134,10 +150,10 @@
         }
         
         .header-badges {
-            margin-top: 12px;
+            margin-top: 15px;
             display: flex;
             gap: 10px;
-            flex-wrap: wrap; /* Fallback for narrow screens */
+            flex-wrap: wrap; 
         }
         .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
@@ -307,7 +323,7 @@
             border-left: 1px solid var(--border-color); 
         }
 
-        /* Image Buttons (Accessibility Wrapper) */
+        /* Image Buttons */
         .img-btn-wrapper {
             display: block;
             background: none;
@@ -471,7 +487,9 @@
             transition: opacity 0.2s ease;
         }
         .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
+        
         .lightbox-img { max-width: 90vw; max-height: 85vh; border: 1px solid var(--text-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
         .lightbox-caption-container { margin-top: 20px; max-width: 90vw; font-family: var(--font-mono); font-size: 0.85em; text-align: center; }
         
         .lightbox-close {
@@ -521,6 +539,7 @@
         <div>
             <h1>Wiktor Wilkołaski<span class="blinking-cursor">_</span></h1>
             <div class="meta-mono">Tech Law & Cybersecurity Researcher</div>
+            <div class="motto-text">// WHO DARES WINS</div>
             <div class="header-badges">
                 <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile">
                     [ ORCID Profile ]
@@ -824,7 +843,7 @@
 
     <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
         <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&times;</button>
-        <img src="" alt="Enlarged view" class="lightbox-img" id="lightbox-img">
+        <div id="lightbox-img-wrapper"></div> 
         <div class="lightbox-caption-container" id="lightbox-caption"></div>
     </div>
 
@@ -862,7 +881,7 @@
                         
                         const figureElement = detailsElement.closest('figure');
                         if (figureElement) {
-                            const y = figureElement.getBoundingClientRect().top + window.scrollY - 150; // Adjusted for sticky header
+                            const y = figureElement.getBoundingClientRect().top + window.scrollY - 150; 
                             window.scrollTo({top: y, behavior: 'smooth'});
                         }
                     }
@@ -889,7 +908,7 @@
 
             // --- Lightbox Logic ---
             const overlay = document.getElementById('lightbox-overlay');
-            const imgElement = document.getElementById('lightbox-img');
+            const imgWrapper = document.getElementById('lightbox-img-wrapper');
             const captionElement = document.getElementById('lightbox-caption');
             const closeBtn = document.getElementById('lightbox-close');
             const triggers = document.querySelectorAll('.js-lightbox-trigger');
@@ -898,8 +917,10 @@
 
             const openLightbox = (src, captionHtml, triggerElement) => {
                 lastFocusedElement = triggerElement;
-                imgElement.src = src;
+                
+                imgWrapper.innerHTML = `<img src="${src}" alt="Enlarged view" class="lightbox-img">`;
                 captionElement.innerHTML = captionHtml || '';
+                
                 overlay.classList.add('active');
                 overlay.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; 
@@ -910,7 +931,8 @@
                 overlay.classList.remove('active');
                 overlay.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = ''; 
-                setTimeout(() => { imgElement.src = ''; }, 200); 
+                
+                setTimeout(() => { imgWrapper.innerHTML = ''; captionElement.innerHTML = ''; }, 200); 
                 
                 if (lastFocusedElement) {
                     setTimeout(() => lastFocusedElement.focus(), 200);
@@ -943,7 +965,7 @@
             closeBtn.addEventListener('click', closeLightbox);
 
             overlay.addEventListener('click', (e) => {
-                if (e.target === overlay || e.target === captionElement) {
+                if (e.target === overlay || e.target === captionElement || e.target === imgWrapper) {
                     closeLightbox();
                 }
             });
@@ -959,7 +981,6 @@
             const copyBtn = document.querySelector('.js-action-copy');
             const feedbackDisplay = document.querySelector('.js-contact-feedback');
 
-            // Pomocnicza funkcja łącząca e-mail
             const getEmail = (element) => {
                 const user = element.getAttribute('data-user');
                 const domain = element.getAttribute('data-domain');
@@ -969,7 +990,8 @@
             if (mailBtn) {
                 mailBtn.addEventListener('click', function() {
                     const email = getEmail(this);
-                    window.location.href = `mailto:${email}?subject=Research%20Collaboration%20Inquiry`;
+                    const mailBody = "Hello Wiktor,%0D%0A%0D%0A[Enter your message here]%0D%0A%0D%0ABest regards,";
+                    window.location.href = `mailto:${email}?subject=Research%20Collaboration%20Inquiry&body=${mailBody}`;
                 });
             }
 
@@ -983,7 +1005,6 @@
                         feedbackDisplay.textContent = `[ ERROR: Could not copy to clipboard ]`;
                     }
                     
-                    // Czyści powiadomienie po 3 sekundach
                     setTimeout(() => {
                         feedbackDisplay.textContent = '';
                     }, 3000);
