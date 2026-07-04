@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Główna strona portfolio -->
+  <url>
+    <loc>https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Plik CV w formacie PDF -->
+  <url>
+    <loc>https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/wiktor-wilkolaski-cv.pdf</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Pełne portfolio akademickie w formacie PDF -->
+  <url>
+    <loc>https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/wiktor-wilkolaski-portfolio-2025_2026.pdf</loc>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
