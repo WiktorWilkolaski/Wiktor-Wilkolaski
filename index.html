@@ -19,15 +19,15 @@
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
     
-    <!-- Zero-Latency Vector Terminal Favicon (Replaces 180px JPEG portrait) -->
+    <!-- Zero-Latency Vector Terminal Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121212'/><text x='5' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%234ade80'>&gt;_</text></svg>">
     
-    <!-- Font Preconnect & Non-blocking Load -->
+    <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CRITICAL: Immediate Pre-Render Theme Initialization (Neutralizes FOUC Flash) -->
+    <!-- Pre-Render FOUC Killer: Synchronous Theme Evaluation -->
     <script>
         (function() {
             try {
@@ -44,7 +44,7 @@
         :root {
             --bg: #ffffff;
             --surface-bg: #f9f9f9;
-            --overlay-bg: rgba(255, 255, 255, 0.88);
+            --overlay-bg: rgba(255, 255, 255, 0.90);
             --text-primary: #151515;
             --text-muted: #555555;
             --border-color: #cccccc;
@@ -59,7 +59,7 @@
         html.dark-theme {
             --bg: #121212;
             --surface-bg: #1c1c1c;
-            --overlay-bg: rgba(18, 18, 18, 0.90);
+            --overlay-bg: rgba(18, 18, 18, 0.92);
             --text-primary: #e6e6e6;
             --text-muted: #a3a3a3;
             --border-color: #383838;
@@ -87,7 +87,7 @@
             transition: background-color 0.25s ease, color 0.25s ease; 
         }
 
-        /* WCAG 1.4.8 Compliance: Strictly Left-Aligned Prose to Eliminate 'Rivers of White Space' */
+        /* WCAG 1.4.8 Compliance */
         p, .content-list li { 
             text-align: left; 
             text-wrap: pretty;
@@ -107,6 +107,18 @@
         a:focus-visible, button:focus-visible, summary:focus-visible {
             outline: 2px dashed var(--accent-green);
             outline-offset: 3px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         h1 { 
@@ -161,7 +173,6 @@
         .status-upcoming { color: var(--accent-amber); }
         .status-artifact { color: var(--text-muted); }
 
-        /* Unpinned Header: Reclaims 25% Viewport Real Estate on Mobile & Laptops */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -182,7 +193,7 @@
             flex-wrap: wrap; 
         }
 
-        /* WCAG 2.5.8 Compliant Touch Targets (Minimum 44px Tap Height) */
+        /* WCAG 2.5.8 Compliant Touch Targets */
         .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
             font-size: 0.8em;
@@ -212,7 +223,6 @@
             background-color: var(--surface-bg);
         }
 
-        /* Non-Destructive Navigation Affordances */
         .nav-links { 
             font-family: var(--font-mono); 
             font-size: 0.85em; 
@@ -240,7 +250,7 @@
 
         .intro-grid {
             display: grid;
-            grid-template-columns: 1fr 180px;
+            grid-template-columns: 1fr 190px;
             gap: 40px;
             align-items: start;
         }
@@ -285,7 +295,6 @@
             border-left-color: var(--accent-green); 
         }
 
-        /* Streamlined Conversion Hub */
         .cta-container {
             margin-top: 50px;
             padding: 35px 25px;
@@ -340,17 +349,6 @@
             transform: translateY(-2px);
             background-color: var(--bg);
             color: var(--text-primary);
-        }
-
-        .cta-btn-secondary {
-            background-color: transparent;
-            color: var(--text-primary);
-            border-color: var(--border-color);
-        }
-        .cta-btn-secondary:hover {
-            background-color: var(--text-primary);
-            color: var(--bg);
-            border-color: var(--text-primary);
         }
 
         .contact-feedback {
@@ -434,10 +432,12 @@
             cursor: zoom-in;
         }
 
+        /* Hardened Portrait Framing for New Contemplative Pose */
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 235px;
             object-fit: cover;
+            object-position: center 18%; /* Focus locks onto eyes & hand gesture */
             border: 1px solid var(--text-primary);
             display: block;
             transition: transform 0.25s ease, box-shadow 0.25s ease; 
@@ -565,7 +565,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Lightbox Dialog */
+        /* Lightbox */
         .lightbox-dialog {
             border: none;
             background: transparent;
@@ -665,7 +665,7 @@
             .header-container { flex-direction: column; gap: 15px; margin-bottom: 30px; padding-top: 25px; }
             .intro-grid { grid-template-columns: 1fr; gap: 25px; }
             .profile-wrapper { text-align: left; }
-            .profile-img { width: 140px; height: 140px; }
+            .profile-img { width: 160px; height: 200px; }
             .log-header { flex-direction: column; gap: 4px; }
             .footer-meta { text-align: left; } 
             .back-to-top-btn { bottom: 16px; right: 16px; }
@@ -681,6 +681,40 @@
                 scroll-behavior: auto !important;
             }
         }
+
+        /* Academic Due Diligence & Print Optimization */
+        @media print {
+            body { 
+                background: #ffffff !important; 
+                color: #000000 !important; 
+                font-size: 11pt; 
+                padding: 0; 
+                max-width: 100%; 
+            }
+            .header-badges, .theme-toggle-btn, .back-to-top-btn, 
+            .lightbox-dialog, .collapse-btn, .contact-actions-wrapper { 
+                display: none !important; 
+            }
+            a { border-bottom: none !important; color: #000000 !important; }
+            a[href^="http"]:after { 
+                content: " [" attr(href) "]"; 
+                font-size: 0.8em; 
+                color: #444444; 
+            }
+            .header-container { 
+                border-bottom: 2px solid #000000; 
+                padding-top: 0; 
+                margin-bottom: 20px; 
+            }
+            .profile-img { 
+                width: 140px; 
+                height: 175px; 
+            }
+            details { display: block !important; }
+            details[open] .log-details-content, .log-details-content { 
+                display: block !important; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -691,11 +725,11 @@
             <div class="meta-mono">Researcher in Technology Law, Information Security Governance & Applied Cryptographic Policy</div>
             <div class="motto-text">// WHO DARES WINS</div>
             <div class="header-badges">
-                <a href="Academic CV Wiktor Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" class="header-badge-link badge-highlight" aria-label="Academic CV PDF">
-                    [ ACADEMIC CV (.PDF) ]
+                <a href="Academic CV Wiktor Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" class="header-badge-link badge-highlight" aria-label="Academic CV PDF (opens in new tab)">
+                    [ ACADEMIC CV (.PDF) ↗ ]
                 </a>
-                <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile">
-                    [ ORCID Profile ]
+                <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile (opens in new tab)">
+                    [ ORCID Profile ↗ ]
                 </a>
                 <button type="button" class="theme-toggle-btn js-theme-toggle" aria-label="Toggle Dark Mode" title="Switch Theme">
                     [ SWITCH TO DARK ]
@@ -718,7 +752,7 @@
             <div>
                 <p>
                     <span class="meta-mono origin-label">// ORIGIN</span>
-                    My background originates at the intersection of competitive high-stakes telemetry systems and doctrinal legal analysis, which evolved into a dedicated pursuit of deep tech law, post-quantum cryptographic migration governance, and systems-level vulnerability analysis. My core methodological approach combines ex-ante regulatory impact assessments (RIA) with empirical, functional comparative analysis across the EU, US, and PRC legal architectures.
+                    My research path originates at the intersection of competitive high-stakes telemetry systems and doctrinal legal analysis, which evolved into a dedicated pursuit of deep tech law, post-quantum cryptographic migration governance, and systems-level vulnerability analysis. My core methodological approach combines ex-ante regulatory impact assessments (RIA) with empirical, functional comparative analysis across the EU, US, and PRC legal architectures.
                 </p>
                 <p>
                     I am an Information Security Governance & Tech Law Researcher based in Warsaw, currently serving as Vice President of the Management Board and Co-Founder at the <strong>"SAVE THE CLICK" Foundation</strong>. Operating at the doctrinal interface between computer science and law, my work focuses on defining regulatory baselines across emerging frontiers, including post-quantum cryptography, AI civil liability (Revised PLD & AI Act), and distributed processing systems.
@@ -732,8 +766,15 @@
                 </div>
             </div>
             <div class="profile-wrapper">
-                <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge portrait of Wiktor Wilkołaski">
-                    <img src="wiktor-wilkolaski-portrait.jpg" alt="Portrait of Wiktor Wilkołaski" class="profile-img" width="180" height="180" decoding="async">
+                <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge portrait: Wiktor Wilkołaski">
+                    <!-- New authoritative contemplative portrait asset with LCP fetchpriority and adjusted focal framing -->
+                    <img src="wiktor-wilkolaski-portrait.jpg" 
+                         alt="Wiktor Wilkołaski - Tech Law and Information Security Governance Researcher" 
+                         class="profile-img" 
+                         width="190" 
+                         height="235" 
+                         decoding="async"
+                         fetchpriority="high">
                 </button>
             </div>
         </section>
@@ -787,7 +828,7 @@
                     <strong>Liability Allocation in Decentralized & AI Architectures:</strong> Analyzing regulatory friction and the imputation of strict product liability under the Revised Product Liability Directive (PLD) and the EU AI Act concerning distributed machine learning architectures (Federated Learning).
                 </li>
                 <li>
-                    <strong>Gaming Ecosystem Governance, Anti-Cheat Protocols & Client-Side Telemetry:</strong> Investigating the statutory boundaries of ring-0 (kernel-level) anti-cheat drivers, continuous memory telemetry, and platform terms-of-service enforcement under GDPR, DSA, and the Revised PLD.
+                    <strong>Gaming Ecosystem Governance, Anti-Cheat Protocols & Client-Side Telemetry:</strong> Investigating statutory boundaries of ring-0 (kernel-level) anti-cheat drivers, continuous memory telemetry, and platform terms-of-service enforcement under GDPR, DSA, and the Revised PLD.
                     <span class="venue">
                         DOMAIN EXPERTISE: 5+ years Tier-1 competitive e-sports background (Grandmaster ranking, EU Top 10), providing practitioner-level forensic familiarity with proprietary game engine anti-tamper mechanisms, memory manipulation exploits, and kernel-space client integrity systems.
                     </span>
@@ -813,7 +854,7 @@
                     <span class="venue">
                         Science of Cyber Security (SciSec 2025), Lecture Notes in Computer Science (LNCS, Vol. 16211), Springer Nature. [Double-Blind Peer-Reviewed]<br>
                         <em>DOI: 10.1007/978-981-95-4677-0_19</em><br>
-                        <a href="https://link.springer.com/chapter/10.1007/978-981-95-4677-0_19" target="_blank" rel="noopener noreferrer">[ READ FULL PAPER ON SPRINGER ]</a>
+                        <a href="https://link.springer.com/chapter/10.1007/978-981-95-4677-0_19" target="_blank" rel="noopener noreferrer" aria-label="Read full paper on Springer (opens in new tab)">[ READ FULL PAPER ON SPRINGER ↗ ]</a>
                     </span>
                 </li>
                 <li>
@@ -826,7 +867,7 @@
                     <strong>Wilkołaski, W.</strong>, "The 'Quantum Paradox' and 'Liability Based on Deterministic Risk': Examining Data Breach Liability, Duty of Care and Retroactivity in the European Union, United States of America, and People's Republic of China."
                     <span class="venue">
                         Technology and Regulation (TechReg), Special Issue [Accepted after Peer Review at Tilting Perspectives 2026, Tilburg University].<br>
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6875399" target="_blank" rel="noopener noreferrer">[ READ PREPRINT ON SSRN (ID: 6875399) ]</a>
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6875399" target="_blank" rel="noopener noreferrer" aria-label="Read preprint on SSRN (opens in new tab)">[ READ PREPRINT ON SSRN (ID: 6875399) ↗ ]</a>
                     </span>
                 </li>
                 <li>
@@ -839,7 +880,7 @@
                     <strong>Wilkołaski, W.</strong> (Presenting Author), Badźmirowska-Masłowska, K., "Quantum Cyberspace Bifurcation: A Comparative Analysis of Regulatory Approaches to Quantum Technologies."
                     <span class="venue">
                         TPRC54: Research Conference on Communication, Information and Internet Policy, Washington, D.C., USA. [Double-Blind Peer-Reviewed Acceptance]<br>
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7475922" target="_blank" rel="noopener noreferrer">[ READ ABSTRACT ON SSRN (ID: 7475922) ]</a>
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7475922" target="_blank" rel="noopener noreferrer" aria-label="Read abstract on SSRN (opens in new tab)">[ READ ABSTRACT ON SSRN (ID: 7475922) ↗ ]</a>
                     </span>
                 </li>
                 <li>
@@ -1040,7 +1081,7 @@
             </div>
         </section>
 
-        <!-- Frictionless Trust & Conversion Architecture -->
+        <!-- Frictionless Conversion & Inquiry Hub -->
         <section id="contact" class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and doctoral / policy research opportunities at the intersection of deep tech law and cybersecurity governance.</p>
@@ -1068,11 +1109,11 @@
             <div>
                 <strong>Contact:</strong> <a href="#contact">Direct Inquiry</a> | <a href="mailto:wiktor042004@gmail.com">wiktor042004@gmail.com</a>
                 <br>
-                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer">wiktor-wilkolaski</a>
+                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">wiktor-wilkolaski ↗</a>
             </div>
             <div class="footer-meta">
-                <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer">0009-0003-7810-9073</a><br>
-                <strong>Curriculum Vitae:</strong> <a href="Academic CV Wiktor Wilkolaski.pdf" target="_blank" rel="noopener noreferrer">[Academic CV .PDF]</a>
+                <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile (opens in new tab)">0009-0003-7810-9073 ↗</a><br>
+                <strong>Curriculum Vitae:</strong> <a href="Academic CV Wiktor Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" aria-label="Academic CV PDF (opens in new tab)">[Academic CV .PDF ↗]</a>
             </div>
         </div>
         <p class="footer-copyright">
@@ -1091,7 +1132,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Theme Switcher Synchronized with HTML class
+            // Theme Switcher Sync with HTML Root
             const themeToggleBtn = document.querySelector('.js-theme-toggle');
             
             function updateThemeButton(isDark) {
@@ -1100,7 +1141,6 @@
                 }
             }
 
-            // Sync initial button state with pre-render evaluation
             const isCurrentlyDark = document.documentElement.classList.contains('dark-theme');
             updateThemeButton(isCurrentlyDark);
 
@@ -1112,7 +1152,7 @@
                 });
             }
 
-            // Collapse Fieldwork Log Handlers
+            // Details/Accordion Smooth Collapse
             document.querySelectorAll('.js-close-details').forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
                     const detailsElement = e.target.closest('details');
@@ -1127,7 +1167,7 @@
                 });
             });
 
-            // Back to Top Button
+            // Back to Top Controller
             const backToTopBtn = document.getElementById('back-to-top');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 400) {
@@ -1141,7 +1181,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Lightbox with Preserved Semantic Alt-Text (WCAG 1.1.1 Remediation)
+            // Lightbox Modal with Preserved Contextual Alt Metadata
             const dialog = document.getElementById('lightbox-dialog');
             const imgWrapper = document.getElementById('lightbox-img-wrapper');
             const captionElement = document.getElementById('lightbox-caption');
@@ -1164,7 +1204,6 @@
                         }
                     }
 
-                    // Inherit verbatim contextual alt-text instead of generic placeholders
                     const originalAlt = img.getAttribute('alt') || 'Fieldwork inspection artifact';
                     imgWrapper.innerHTML = `<img src="${img.src}" alt="${originalAlt}" class="lightbox-img">`;
                     captionElement.innerHTML = captionHtml;
@@ -1198,7 +1237,7 @@
                 }
             });
 
-            // One-Click Frictionless Email Copy
+            // Zero-Friction Clipboard Copy API
             const copyBtn = document.querySelector('.js-action-copy');
             const feedbackDisplay = document.querySelector('.js-contact-feedback');
 
