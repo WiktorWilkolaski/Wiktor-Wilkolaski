@@ -19,15 +19,15 @@
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
     
-    <!-- Zero-Latency Vector Terminal Favicon -->
+    <!-- Wektorowy, bezopóźnieniowy Favicon terminalowy -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121212'/><text x='5' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%234ade80'>&gt;_</text></svg>">
     
-    <!-- Preconnect & Fonts -->
+    <!-- Połączenia z Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Pre-Render FOUC Killer: Synchronous Theme Evaluation -->
+    <!-- SYNCHRONICZNY SKRYPT ANTY-FOUC (Zapobiega białemu błyskowi w trybie ciemnym) -->
     <script>
         (function() {
             try {
@@ -87,7 +87,7 @@
             transition: background-color 0.25s ease, color 0.25s ease; 
         }
 
-        /* WCAG 1.4.8 Compliance */
+        /* WCAG 1.4.8: Wyrównanie tekstu do lewej bez sztucznych przerw */
         p, .content-list li { 
             text-align: left; 
             text-wrap: pretty;
@@ -107,18 +107,6 @@
         a:focus-visible, button:focus-visible, summary:focus-visible {
             outline: 2px dashed var(--accent-green);
             outline-offset: 3px;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
         }
 
         h1 { 
@@ -173,6 +161,7 @@
         .status-upcoming { color: var(--accent-amber); }
         .status-artifact { color: var(--text-muted); }
 
+        /* Odczepiony nagłówek uwalniający pionową przestrzeń ekranu */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -193,7 +182,7 @@
             flex-wrap: wrap; 
         }
 
-        /* WCAG 2.5.8 Compliant Touch Targets */
+        /* WCAG 2.5.8: Strefy dotykowe min. 44px */
         .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
             font-size: 0.8em;
@@ -432,12 +421,12 @@
             cursor: zoom-in;
         }
 
-        /* Hardened Portrait Framing for New Contemplative Pose */
+        /* Skalibrowany kontener nowego portretu pod kąt poziomy 3:2 */
         .profile-img {
             width: 190px;
             height: 235px;
             object-fit: cover;
-            object-position: center 18%; /* Focus locks onto eyes & hand gesture */
+            object-position: center 18%; /* Kotwica na linii oczu i gestu dłoni */
             border: 1px solid var(--text-primary);
             display: block;
             transition: transform 0.25s ease, box-shadow 0.25s ease; 
@@ -565,7 +554,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Lightbox */
+        /* Lightbox Dialog */
         .lightbox-dialog {
             border: none;
             background: transparent;
@@ -682,7 +671,7 @@
             }
         }
 
-        /* Academic Due Diligence & Print Optimization */
+        /* Arkusz stylów do druku i ewaluacji akademickiej */
         @media print {
             body { 
                 background: #ffffff !important; 
@@ -767,13 +756,13 @@
             </div>
             <div class="profile-wrapper">
                 <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge portrait: Wiktor Wilkołaski">
-                    <!-- New authoritative contemplative portrait asset with LCP fetchpriority and adjusted focal framing -->
-                    <img src="wiktor-wilkolaski-portrait.jpg" 
-                         alt="Wiktor Wilkołaski - Tech Law and Information Security Governance Researcher" 
+                    <!-- ZMIENIONA NAZWA PLIKU W KODZIE: wiktor-wilkolaski-portrait-2026.jpg -->
+                    <img src="wiktor-wilkolaski-portrait-2026.jpg" 
+                         alt="Wiktor Wilkołaski - Badacz Prawa Nowych Technologii i Zarządzania Bezpieczeństwem Informacji" 
                          class="profile-img" 
                          width="190" 
                          height="235" 
-                         decoding="async"
+                         decoding="async" 
                          fetchpriority="high">
                 </button>
             </div>
@@ -1081,7 +1070,7 @@
             </div>
         </section>
 
-        <!-- Frictionless Conversion & Inquiry Hub -->
+        <!-- Szybka, bezpieczna sekcja zapytań o współpracę -->
         <section id="contact" class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and doctoral / policy research opportunities at the intersection of deep tech law and cybersecurity governance.</p>
@@ -1132,7 +1121,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Theme Switcher Sync with HTML Root
+            // Przełącznik motywów w pełnej synchronizacji z klasą <html>
             const themeToggleBtn = document.querySelector('.js-theme-toggle');
             
             function updateThemeButton(isDark) {
@@ -1152,7 +1141,7 @@
                 });
             }
 
-            // Details/Accordion Smooth Collapse
+            // Płynne zwijanie notatek terenowych
             document.querySelectorAll('.js-close-details').forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
                     const detailsElement = e.target.closest('details');
@@ -1167,7 +1156,7 @@
                 });
             });
 
-            // Back to Top Controller
+            // Kontroler przycisku powrotu na górę
             const backToTopBtn = document.getElementById('back-to-top');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 400) {
@@ -1181,7 +1170,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Lightbox Modal with Preserved Contextual Alt Metadata
+            // Lightbox z zachowaniem semantycznego alt-textu (WCAG 1.1.1)
             const dialog = document.getElementById('lightbox-dialog');
             const imgWrapper = document.getElementById('lightbox-img-wrapper');
             const captionElement = document.getElementById('lightbox-caption');
@@ -1237,7 +1226,7 @@
                 }
             });
 
-            // Zero-Friction Clipboard Copy API
+            // Kopiowanie adresu e-mail do schowka jednym kliknięciem
             const copyBtn = document.querySelector('.js-action-copy');
             const feedbackDisplay = document.querySelector('.js-contact-feedback');
 
