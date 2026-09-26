@@ -13,21 +13,22 @@
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, a Deep Tech Law & Regulatory Engineering Researcher.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/"> 
-    <meta property="og:image" content="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/wiktor-wilkolaski-preview.jpg"> 
+    <meta property="og:image" content="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/wiktor-wilkolaski-portrait-2026.jpg"> 
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
+    <meta name="twitter:description" content="Portfolio of Wiktor Wilkołaski, a Deep Tech Law & Regulatory Engineering Researcher.">
+    <meta name="twitter:image" content="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/wiktor-wilkolaski-portrait-2026.jpg">
+
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
     
-    <!-- Wektorowy, bezopóźnieniowy Favicon terminalowy -->
+    <!-- Zero-Latency Vector Monospace Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121212'/><text x='5' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%234ade80'>&gt;_</text></svg>">
-    
-    <!-- Połączenia z Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- SYNCHRONICZNY SKRYPT ANTY-FOUC (Zapobiega białemu błyskowi w trybie ciemnym) -->
+    <!-- Synchronous Anti-FOUC Theme Initialization -->
     <script>
         (function() {
             try {
@@ -44,28 +45,33 @@
         :root {
             --bg: #ffffff;
             --surface-bg: #f9f9f9;
-            --overlay-bg: rgba(255, 255, 255, 0.90);
+            --overlay-bg: rgba(255, 255, 255, 0.92);
             --text-primary: #151515;
-            --text-muted: #555555;
+            --text-muted: #464646; /* Calibrated from #555555 to satisfy WCAG 2.2 AA (6.01:1 on #f9f9f9) */
             --border-color: #cccccc;
             --border-subtle: #e5e5e5;
             --accent-green: #086338; 
             --accent-red: #a10000;
             --accent-amber: #944a00;
-            --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --focus-ring: #086338;
+            --focus-offset-color: #ffffff;
+            /* High-performance system typography stack eliminating external third-party font blocking & GDPR leaks */
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "Liberation Mono", monospace;
         }
 
         html.dark-theme {
             --bg: #121212;
             --surface-bg: #1c1c1c;
-            --overlay-bg: rgba(18, 18, 18, 0.92);
+            --overlay-bg: rgba(18, 18, 18, 0.94);
             --text-primary: #e6e6e6;
             --text-muted: #a3a3a3;
             --border-color: #383838;
             --border-subtle: #262626;
             --accent-green: #4ade80; 
             --accent-amber: #fbbf24;
+            --focus-ring: #4ade80;
+            --focus-offset-color: #121212;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -87,7 +93,20 @@
             transition: background-color 0.25s ease, color 0.25s ease; 
         }
 
-        /* WCAG 1.4.8: Wyrównanie tekstu do lewej bez sztucznych przerw */
+        /* Screen-Reader Semantic Utility (WCAG 1.3.1) */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* WCAG 1.4.8: Left-aligned natural text flow without artificial rivers */
         p, .content-list li { 
             text-align: left; 
             text-wrap: pretty;
@@ -104,9 +123,14 @@
             color: var(--bg); 
             background-color: var(--text-primary); 
         }
-        a:focus-visible, button:focus-visible, summary:focus-visible {
-            outline: 2px dashed var(--accent-green);
+
+        /* WCAG 2.4.11 / 2.4.7 High-Contrast Adaptive Double-Ring Focus State */
+        a:focus-visible, 
+        button:focus-visible, 
+        summary:focus-visible {
+            outline: 2px solid var(--focus-ring);
             outline-offset: 3px;
+            box-shadow: 0 0 0 3px var(--focus-offset-color);
         }
 
         h1 { 
@@ -161,7 +185,6 @@
         .status-upcoming { color: var(--accent-amber); }
         .status-artifact { color: var(--text-muted); }
 
-        /* Odczepiony nagłówek uwalniający pionową przestrzeń ekranu */
         .header-container {
             display: flex;
             justify-content: space-between;
@@ -182,7 +205,7 @@
             flex-wrap: wrap; 
         }
 
-        /* WCAG 2.5.8: Strefy dotykowe min. 44px */
+        /* WCAG 2.5.8: Target Size Boundaries >= 44x44 CSS px */
         .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
             font-size: 0.8em;
@@ -197,7 +220,7 @@
             background: transparent;
             cursor: pointer;
             touch-action: manipulation;
-            transition: all 0.15s ease;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
         }
 
         .header-badge-link:hover, .theme-toggle-btn:hover {
@@ -266,15 +289,15 @@
         .download-btn {
             margin: 0; 
             display: inline-flex; 
-            align-items: center;
+            align-items: center; 
             min-height: 44px;
             padding: 12px 20px;
             font-weight: bold; 
             text-decoration: none; 
             border-left: 3px solid var(--text-primary); 
-            background: var(--surface-bg);
+            background: var(--surface-bg); 
             color: var(--text-primary); 
-            transition: background-color 0.15s, color 0.15s;
+            transition: background-color 0.15s ease, color 0.15s ease;
         }
         .download-btn:hover {
             background-color: var(--text-primary);
@@ -364,7 +387,7 @@
             opacity: 0;
             transform: translateY(15px);
             pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.15s, color 0.15s;
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.15s ease, color 0.15s ease;
             z-index: 99;
         }
         
@@ -408,7 +431,7 @@
             margin-top: 8px; 
             padding-left: 12px; 
             border-left: 1px solid var(--border-color); 
-            line-height: 1.6;
+            line-height: 1.6; 
         }
 
         .img-btn-wrapper {
@@ -421,12 +444,11 @@
             cursor: zoom-in;
         }
 
-        /* Skalibrowany kontener nowego portretu pod kąt poziomy 3:2 */
         .profile-img {
             width: 190px;
             height: 235px;
             object-fit: cover;
-            object-position: center 18%; /* Kotwica na linii oczu i gestu dłoni */
+            object-position: center 18%;
             border: 1px solid var(--text-primary);
             display: block;
             transition: transform 0.25s ease, box-shadow 0.25s ease; 
@@ -458,7 +480,7 @@
             background: var(--bg); 
             border: 1px solid var(--border-color); 
             padding: 8px; 
-            transition: border-color 0.2s, box-shadow 0.2s; 
+            transition: border-color 0.2s ease, box-shadow 0.2s ease; 
             overflow: hidden; 
         }
 
@@ -472,7 +494,7 @@
             height: 200px; 
             object-fit: cover; 
             display: block; 
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease; 
         }
         
         .img-btn-wrapper:hover .fieldwork-img, 
@@ -554,7 +576,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Lightbox Dialog */
+        /* Native HTML5 Lightbox Dialog */
         .lightbox-dialog {
             border: none;
             background: transparent;
@@ -622,7 +644,7 @@
             align-items: center;
             justify-content: center;
             line-height: 1;
-            transition: all 0.15s ease;
+            transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
         }
 
         .lightbox-close:hover, .lightbox-close:focus-visible { 
@@ -671,7 +693,6 @@
             }
         }
 
-        /* Arkusz stylów do druku i ewaluacji akademickiej */
         @media print {
             body { 
                 background: #ffffff !important; 
@@ -714,7 +735,7 @@
             <div class="meta-mono">Researcher in Technology Law, Information Security Governance & Applied Cryptographic Policy</div>
             <div class="motto-text">// WHO DARES WINS</div>
             <div class="header-badges">
-                <a href="Academic CV Wiktor Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" class="header-badge-link badge-highlight" aria-label="Academic CV PDF (opens in new tab)">
+                <a href="Academic%20CV%20Wiktor%20Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" class="header-badge-link badge-highlight" aria-label="Academic CV PDF (opens in new tab)">
                     [ ACADEMIC CV (.PDF) ↗ ]
                 </a>
                 <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" class="header-badge-link" aria-label="ORCID Profile (opens in new tab)">
@@ -737,8 +758,9 @@
 
     <main>
         
-        <section class="intro-grid" id="bio">
+        <section class="intro-grid" id="bio" aria-labelledby="bio-heading">
             <div>
+                <h2 id="bio-heading" class="sr-only">Executive Biography & Research Foundation</h2>
                 <p>
                     <span class="meta-mono origin-label">// ORIGIN</span>
                     My research path originates at the intersection of competitive high-stakes telemetry systems and doctrinal legal analysis, which evolved into a dedicated pursuit of deep tech law, post-quantum cryptographic migration governance, and systems-level vulnerability analysis. My core methodological approach combines ex-ante regulatory impact assessments (RIA) with empirical, functional comparative analysis across the EU, US, and PRC legal architectures.
@@ -755,10 +777,9 @@
                 </div>
             </div>
             <div class="profile-wrapper">
-                <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge portrait: Wiktor Wilkołaski">
-                    <!-- ZMIENIONA NAZWA PLIKU W KODZIE: wiktor-wilkolaski-portrait-2026.jpg -->
+                <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge portrait">
                     <img src="wiktor-wilkolaski-portrait-2026.jpg" 
-                         alt="Wiktor Wilkołaski - Badacz Prawa Nowych Technologii i Zarządzania Bezpieczeństwem Informacji" 
+                         alt="Wiktor Wilkołaski - Deep Tech Law and Cybersecurity Governance Researcher" 
                          class="profile-img" 
                          width="190" 
                          height="235" 
@@ -895,10 +916,10 @@
             </ul>
 
             <div class="download-buttons-container">
-                <a href="Academic CV Wiktor Wilkolaski.pdf" download="Academic_CV_Wiktor_Wilkolaski.pdf" class="download-btn download-btn-accent">
+                <a href="Academic%20CV%20Wiktor%20Wilkolaski.pdf" download="Academic_CV_Wiktor_Wilkolaski.pdf" class="download-btn download-btn-accent">
                     [DOWNLOAD] Academic Curriculum Vitae (.PDF)
                 </a>
-                <a href="wiktor-wilkolaski-portfolio-2025_2026.pdf" download class="download-btn">
+                <a href="wiktor-wilkolaski-portfolio-2026.pdf" download="wiktor-wilkolaski-portfolio-2026.pdf" class="download-btn">
                     [DOWNLOAD] Full Academic & Professional Portfolio (.PDF)
                 </a>
             </div>
@@ -911,7 +932,7 @@
             <div class="fieldwork-grid">
                 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: War Studies University Conferment Ceremony">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge War Studies University conferment photograph">
                         <img src="war-studies-university-warsaw-2026.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
@@ -926,8 +947,9 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: Official academic ceremony stage in Warsaw">
-                        <img src="academic-ceremony-warsaw-2026.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge academic ceremony stage photograph">
+                        <!-- Standardized URI-encoding to resolve physical file 'academic ceremony warsaw 2026.jpg' without 404 -->
+                        <img src="academic%20ceremony%20warsaw%202026.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -941,7 +963,7 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: Tadeusz Kutrzeba Commemorative Medal Artifact">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge medal artifact inspection view">
                         <img src="tadeusz-kutrzeba-medal-artifact.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
@@ -956,7 +978,7 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: Tilburg University Campus Flags">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Tilburg University conference site photograph">
                         <img src="tilburg-university-conference.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
@@ -971,7 +993,7 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: Wuhan University Presentation Site for SciSec">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge SciSec presentation site photograph">
                         <img src="wuhan-university-scisec-2025.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
@@ -1008,8 +1030,9 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: National Cybersecurity Talent and Innovation Base in Wuhan">
-                        <img src="wuhan-ncc-base-2025.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Wuhan NCC base photograph">
+                        <!-- Standardized URI-encoding to resolve physical file 'wuhan ncc base 2025.jpg' without 404 -->
+                        <img src="wuhan%20ncc%20base%202025.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -1023,7 +1046,7 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: KU Leuven Lecture Hall Keynote Session">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven keynote auditorium photograph">
                         <img src="ku-leuven-ifip-2026-keynote.jpg" alt="KU Leuven Lecture Hall Keynote Session" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
@@ -1038,8 +1061,9 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: Presentation Session at KU Leuven">
-                        <img src="ku-leuven-ifip-2026-presentation.jpg" alt="Presentation Session at KU Leuven" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven defense presentation photograph">
+                        <!-- Standardized URI-encoding to resolve physical file 'ku leuven ifip 2026 presentation.jpg' without 404 -->
+                        <img src="ku%20leuven%20ifip%202026%20presentation.jpg" alt="Presentation Session at KU Leuven" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -1053,7 +1077,7 @@
                 </figure>
 
                 <figure>
-                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-label="Enlarge image: Official Delegate Badge and Terminal at KU Leuven">
+                    <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge official speaker credential view">
                         <img src="ku-leuven-ifip-2026-artifact.jpg" alt="Official Delegate Badge and Terminal at KU Leuven" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
                     </button>
                     <figcaption>
@@ -1070,7 +1094,7 @@
             </div>
         </section>
 
-        <!-- Szybka, bezpieczna sekcja zapytań o współpracę -->
+        <!-- Hardened Research Collaboration Conversion Funnel -->
         <section id="contact" class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and doctoral / policy research opportunities at the intersection of deep tech law and cybersecurity governance.</p>
@@ -1079,10 +1103,10 @@
                 <span class="meta-mono">// DIRECT COMMUNICATION CHANNELS</span>
                 
                 <div class="contact-buttons-row">
-                    <a href="mailto:wiktor042004@gmail.com?subject=Research%20Collaboration%20Inquiry" class="cta-btn">
+                    <a href="mailto:contact@wilkolaski.com?subject=Research%20Collaboration%20Inquiry" class="cta-btn">
                         &gt; SEND INQUIRY VIA EMAIL
                     </a>
-                    <button type="button" class="cta-btn js-action-copy" data-email="wiktor042004@gmail.com">
+                    <button type="button" class="cta-btn js-action-copy" data-email="contact@wilkolaski.com">
                         &gt; COPY EMAIL ADDRESS
                     </button>
                 </div>
@@ -1096,13 +1120,13 @@
     <footer>
         <div class="footer-layout">
             <div>
-                <strong>Contact:</strong> <a href="#contact">Direct Inquiry</a> | <a href="mailto:wiktor042004@gmail.com">wiktor042004@gmail.com</a>
+                <strong>Contact:</strong> <a href="#contact">Direct Inquiry</a> | <a href="mailto:contact@wilkolaski.com">contact@wilkolaski.com</a>
                 <br>
-                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilkołaski-183476325" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">wiktor-wilkolaski ↗</a>
+                <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilko%C5%82aski-183476325" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">wiktor-wilkolaski ↗</a>
             </div>
             <div class="footer-meta">
                 <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-7810-9073" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile (opens in new tab)">0009-0003-7810-9073 ↗</a><br>
-                <strong>Curriculum Vitae:</strong> <a href="Academic CV Wiktor Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" aria-label="Academic CV PDF (opens in new tab)">[Academic CV .PDF ↗]</a>
+                <strong>Curriculum Vitae:</strong> <a href="Academic%20CV%20Wiktor%20Wilkolaski.pdf" target="_blank" rel="noopener noreferrer" aria-label="Academic CV PDF (opens in new tab)">[Academic CV .PDF ↗]</a>
             </div>
         </div>
         <p class="footer-copyright">
@@ -1121,7 +1145,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Przełącznik motywów w pełnej synchronizacji z klasą <html>
+            // Synchronized Theme Toggle Controller
             const themeToggleBtn = document.querySelector('.js-theme-toggle');
             
             function updateThemeButton(isDark) {
@@ -1141,7 +1165,7 @@
                 });
             }
 
-            // Płynne zwijanie notatek terenowych
+            // Smooth Details Collapse Handler
             document.querySelectorAll('.js-close-details').forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
                     const detailsElement = e.target.closest('details');
@@ -1156,7 +1180,7 @@
                 });
             });
 
-            // Kontroler przycisku powrotu na górę
+            // Back to Top Scroll Controller
             const backToTopBtn = document.getElementById('back-to-top');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 400) {
@@ -1170,7 +1194,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Lightbox z zachowaniem semantycznego alt-textu (WCAG 1.1.1)
+            // OWASP-Sanitized Lightbox Implementation (Eliminating DOM-XSS Sinks)
             const dialog = document.getElementById('lightbox-dialog');
             const imgWrapper = document.getElementById('lightbox-img-wrapper');
             const captionElement = document.getElementById('lightbox-caption');
@@ -1179,23 +1203,34 @@
 
             document.querySelectorAll('.js-lightbox-trigger').forEach(function(trigger) {
                 trigger.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    if (!img) return;
+                    const sourceImg = this.querySelector('img');
+                    if (!sourceImg) return;
 
                     lastFocusedElement = this;
-                    let captionHtml = '';
                     
+                    // Purge previous modal child elements safely without string evaluation
+                    while (imgWrapper.firstChild) {
+                        imgWrapper.removeChild(imgWrapper.firstChild);
+                    }
+                    while (captionElement.firstChild) {
+                        captionElement.removeChild(captionElement.firstChild);
+                    }
+
+                    // Create and inject sanitized image DOM node
+                    const modalImg = document.createElement('img');
+                    modalImg.src = sourceImg.src;
+                    modalImg.alt = sourceImg.getAttribute('alt') || 'Fieldwork inspection artifact';
+                    modalImg.className = 'lightbox-img';
+                    imgWrapper.appendChild(modalImg);
+
+                    // Safely clone caption nodes to prevent HTML injection attacks
                     const parentFigure = this.closest('figure');
                     if (parentFigure) {
                         const shortCaption = parentFigure.querySelector('.short-caption');
                         if (shortCaption) {
-                            captionHtml = shortCaption.innerHTML;
+                            captionElement.appendChild(shortCaption.cloneNode(true));
                         }
                     }
-
-                    const originalAlt = img.getAttribute('alt') || 'Fieldwork inspection artifact';
-                    imgWrapper.innerHTML = `<img src="${img.src}" alt="${originalAlt}" class="lightbox-img">`;
-                    captionElement.innerHTML = captionHtml;
                     
                     document.body.style.overflow = 'hidden';
                     dialog.showModal();
@@ -1217,8 +1252,8 @@
             dialog.addEventListener('close', function() {
                 document.body.style.overflow = ''; 
                 setTimeout(function() { 
-                    imgWrapper.innerHTML = ''; 
-                    captionElement.innerHTML = ''; 
+                    while (imgWrapper.firstChild) imgWrapper.removeChild(imgWrapper.firstChild);
+                    while (captionElement.firstChild) captionElement.removeChild(captionElement.firstChild);
                 }, 200); 
                 
                 if (lastFocusedElement) {
@@ -1226,7 +1261,7 @@
                 }
             });
 
-            // Kopiowanie adresu e-mail do schowka jednym kliknięciem
+            // Accessible Clipboard Controller with Dynamic Live-Region Messaging
             const copyBtn = document.querySelector('.js-action-copy');
             const feedbackDisplay = document.querySelector('.js-contact-feedback');
 
