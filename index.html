@@ -25,10 +25,10 @@
 
     <title>Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher</title>
     
-    <!-- Zero-Latency Vector Monospace Favicon -->
+    <!-- Wektorowy Favicon Terminalowy -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121212'/><text x='5' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%234ade80'>&gt;_</text></svg>">
 
-    <!-- Synchronous Anti-FOUC Theme Initialization -->
+    <!-- Synchroniczny Skrypt Anty-FOUC -->
     <script>
         (function() {
             try {
@@ -47,7 +47,7 @@
             --surface-bg: #f9f9f9;
             --overlay-bg: rgba(255, 255, 255, 0.92);
             --text-primary: #151515;
-            --text-muted: #464646; /* Calibrated from #555555 to satisfy WCAG 2.2 AA (6.01:1 on #f9f9f9) */
+            --text-muted: #464646; /* Skalibrowany pod WCAG 2.2 AA (6.01:1 na #f9f9f9) */
             --border-color: #cccccc;
             --border-subtle: #e5e5e5;
             --accent-green: #086338; 
@@ -55,7 +55,6 @@
             --accent-amber: #944a00;
             --focus-ring: #086338;
             --focus-offset-color: #ffffff;
-            /* High-performance system typography stack eliminating external third-party font blocking & GDPR leaks */
             --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "Liberation Mono", monospace;
         }
@@ -93,7 +92,6 @@
             transition: background-color 0.25s ease, color 0.25s ease; 
         }
 
-        /* Screen-Reader Semantic Utility (WCAG 1.3.1) */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -106,7 +104,6 @@
             border: 0;
         }
 
-        /* WCAG 1.4.8: Left-aligned natural text flow without artificial rivers */
         p, .content-list li { 
             text-align: left; 
             text-wrap: pretty;
@@ -124,7 +121,6 @@
             background-color: var(--text-primary); 
         }
 
-        /* WCAG 2.4.11 / 2.4.7 High-Contrast Adaptive Double-Ring Focus State */
         a:focus-visible, 
         button:focus-visible, 
         summary:focus-visible {
@@ -205,7 +201,6 @@
             flex-wrap: wrap; 
         }
 
-        /* WCAG 2.5.8: Target Size Boundaries >= 44x44 CSS px */
         .header-badge-link, .theme-toggle-btn {
             font-family: var(--font-mono);
             font-size: 0.8em;
@@ -576,7 +571,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Native HTML5 Lightbox Dialog */
         .lightbox-dialog {
             border: none;
             background: transparent;
@@ -931,6 +925,7 @@
             
             <div class="fieldwork-grid">
                 
+                <!-- LOG_01: Zweryfikowany zasób działający poprawnie -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge War Studies University conferment photograph">
                         <img src="war-studies-university-warsaw-2026.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -946,10 +941,17 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_02: NAPRAWIONO - obsługa spacji z repozytorium GitHub oraz fallback do kebab-case -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge academic ceremony stage photograph">
-                        <!-- Standardized URI-encoding to resolve physical file 'academic ceremony warsaw 2026.jpg' without 404 -->
-                        <img src="academic%20ceremony%20warsaw%202026.jpg" alt="Official academic ceremony stage in Warsaw" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
+                        <img src="academic%20ceremony%20warsaw%202026.jpg" 
+                             onerror="this.onerror=null;this.src='academic-ceremony-warsaw-2026.jpg';"
+                             alt="Official academic ceremony stage in Warsaw" 
+                             class="fieldwork-img" 
+                             width="600" 
+                             height="400" 
+                             loading="lazy" 
+                             decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -962,6 +964,7 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_03: Zweryfikowany zasób działający poprawnie -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge medal artifact inspection view">
                         <img src="tadeusz-kutrzeba-medal-artifact.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -977,6 +980,7 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_04: Zweryfikowany zasób działający poprawnie -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Tilburg University conference site photograph">
                         <img src="tilburg-university-conference.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -992,6 +996,7 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_05: Zweryfikowany zasób działający poprawnie -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge SciSec presentation site photograph">
                         <img src="wuhan-university-scisec-2025.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -1029,10 +1034,17 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_06: NAPRAWIONO - obsługa spacji z repozytorium GitHub oraz fallback do kebab-case -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Wuhan NCC base photograph">
-                        <!-- Standardized URI-encoding to resolve physical file 'wuhan ncc base 2025.jpg' without 404 -->
-                        <img src="wuhan%20ncc%20base%202025.jpg" alt="National Cybersecurity Talent and Innovation Base in Wuhan" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
+                        <img src="wuhan%20ncc%20base%202025.jpg" 
+                             onerror="this.onerror=null;this.src='wuhan-ncc-base-2025.jpg';"
+                             alt="National Cybersecurity Talent and Innovation Base in Wuhan" 
+                             class="fieldwork-img" 
+                             width="600" 
+                             height="400" 
+                             loading="lazy" 
+                             decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -1045,6 +1057,7 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_07: Zweryfikowany zasób działający poprawnie -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven keynote auditorium photograph">
                         <img src="ku-leuven-ifip-2026-keynote.jpg" alt="KU Leuven Lecture Hall Keynote Session" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -1060,10 +1073,17 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_08: NAPRAWIONO - obsługa spacji z repozytorium GitHub oraz fallback do kebab-case -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven defense presentation photograph">
-                        <!-- Standardized URI-encoding to resolve physical file 'ku leuven ifip 2026 presentation.jpg' without 404 -->
-                        <img src="ku%20leuven%20ifip%202026%20presentation.jpg" alt="Presentation Session at KU Leuven" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
+                        <img src="ku%20leuven%20ifip%202026%20presentation.jpg" 
+                             onerror="this.onerror=null;this.src='ku-leuven-ifip-2026-presentation.jpg';"
+                             alt="Presentation Session at KU Leuven" 
+                             class="fieldwork-img" 
+                             width="600" 
+                             height="400" 
+                             loading="lazy" 
+                             decoding="async">
                     </button>
                     <figcaption>
                         <div class="short-caption">
@@ -1076,6 +1096,7 @@
                     </figcaption>
                 </figure>
 
+                <!-- LOG_09: Zweryfikowany zasób działający poprawnie -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge official speaker credential view">
                         <img src="ku-leuven-ifip-2026-artifact.jpg" alt="Official Delegate Badge and Terminal at KU Leuven" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -1094,7 +1115,6 @@
             </div>
         </section>
 
-        <!-- Hardened Research Collaboration Conversion Funnel -->
         <section id="contact" class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and doctoral / policy research opportunities at the intersection of deep tech law and cybersecurity governance.</p>
@@ -1145,7 +1165,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Synchronized Theme Toggle Controller
+            // Kontroler przełącznika motywów
             const themeToggleBtn = document.querySelector('.js-theme-toggle');
             
             function updateThemeButton(isDark) {
@@ -1165,7 +1185,7 @@
                 });
             }
 
-            // Smooth Details Collapse Handler
+            // Płynne zwijanie notatek terenowych
             document.querySelectorAll('.js-close-details').forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
                     const detailsElement = e.target.closest('details');
@@ -1180,7 +1200,7 @@
                 });
             });
 
-            // Back to Top Scroll Controller
+            // Kontroler przycisku powrotu na górę
             const backToTopBtn = document.getElementById('back-to-top');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 400) {
@@ -1194,7 +1214,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // OWASP-Sanitized Lightbox Implementation (Eliminating DOM-XSS Sinks)
+            // Bezpieczna implementacja Lightbox (zabezpieczenie przed DOM-XSS)
             const dialog = document.getElementById('lightbox-dialog');
             const imgWrapper = document.getElementById('lightbox-img-wrapper');
             const captionElement = document.getElementById('lightbox-caption');
@@ -1208,7 +1228,7 @@
 
                     lastFocusedElement = this;
                     
-                    // Purge previous modal child elements safely without string evaluation
+                    // Bezpieczne czyszczenie kontenera potomnego
                     while (imgWrapper.firstChild) {
                         imgWrapper.removeChild(imgWrapper.firstChild);
                     }
@@ -1216,14 +1236,14 @@
                         captionElement.removeChild(captionElement.firstChild);
                     }
 
-                    // Create and inject sanitized image DOM node
+                    // Bezpieczne tworzenie i wstrzykiwanie węzła obrazu z aktualnego źródła
                     const modalImg = document.createElement('img');
-                    modalImg.src = sourceImg.src;
+                    modalImg.src = sourceImg.currentSrc || sourceImg.src;
                     modalImg.alt = sourceImg.getAttribute('alt') || 'Fieldwork inspection artifact';
                     modalImg.className = 'lightbox-img';
                     imgWrapper.appendChild(modalImg);
 
-                    // Safely clone caption nodes to prevent HTML injection attacks
+                    // Klonowanie podpisu bez użycia innerHTML
                     const parentFigure = this.closest('figure');
                     if (parentFigure) {
                         const shortCaption = parentFigure.querySelector('.short-caption');
@@ -1261,7 +1281,7 @@
                 }
             });
 
-            // Accessible Clipboard Controller with Dynamic Live-Region Messaging
+            // Obsługa kopiowania adresu e-mail z informacją zwrotną w aria-live
             const copyBtn = document.querySelector('.js-action-copy');
             const feedbackDisplay = document.querySelector('.js-contact-feedback');
 
