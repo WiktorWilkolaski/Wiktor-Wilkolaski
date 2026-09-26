@@ -941,11 +941,11 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_02: NAPRAWIONO - obsługa spacji z repozytorium GitHub oraz fallback do kebab-case -->
+                <!-- LOG_02: NAPRAWIONO - bezpośrednia ścieżka do rzeczywistego pliku kebab-case w repozytorium -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge academic ceremony stage photograph">
-                        <img src="academic%20ceremony%20warsaw%202026.jpg" 
-                             onerror="this.onerror=null;this.src='academic-ceremony-warsaw-2026.jpg';"
+                        <img src="academic-ceremony-warsaw-2026.jpg" 
+                             onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='academic%20ceremony%20warsaw%202026.jpg';}"
                              alt="Official academic ceremony stage in Warsaw" 
                              class="fieldwork-img" 
                              width="600" 
@@ -1034,11 +1034,11 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_06: NAPRAWIONO - obsługa spacji z repozytorium GitHub oraz fallback do kebab-case -->
+                <!-- LOG_06: NAPRAWIONO - bezpośrednia ścieżka do rzeczywistego pliku w repozytorium z kaskadą awaryjną -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Wuhan NCC base photograph">
-                        <img src="wuhan%20ncc%20base%202025.jpg" 
-                             onerror="this.onerror=null;this.src='wuhan-ncc-base-2025.jpg';"
+                        <img src="wuhan-ncc-base-2025.jpg" 
+                             onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='wuhan%20ncc%20base%202025.jpg';}else if(this.dataset.retry==1){this.dataset.retry=2;this.src='5f678233-34a4-4ec5-8655-22e0eecb2567.jpg';}else if(this.dataset.retry==2){this.dataset.retry=3;this.src='14e4acad-bc22-47c9-9234-aff8cfb998c4.jpg';}"
                              alt="National Cybersecurity Talent and Innovation Base in Wuhan" 
                              class="fieldwork-img" 
                              width="600" 
@@ -1073,11 +1073,11 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_08: NAPRAWIONO - obsługa spacji z repozytorium GitHub oraz fallback do kebab-case -->
+                <!-- LOG_08: NAPRAWIONO - bezpośrednia ścieżka do rzeczywistego pliku kebab-case w repozytorium -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven defense presentation photograph">
-                        <img src="ku%20leuven%20ifip%202026%20presentation.jpg" 
-                             onerror="this.onerror=null;this.src='ku-leuven-ifip-2026-presentation.jpg';"
+                        <img src="ku-leuven-ifip-2026-presentation.jpg" 
+                             onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='ku%20leuven%20ifip%202026%20presentation.jpg';}"
                              alt="Presentation Session at KU Leuven" 
                              class="fieldwork-img" 
                              width="600" 
@@ -1115,6 +1115,7 @@
             </div>
         </section>
 
+        <!-- Hardened Research Collaboration Conversion Funnel -->
         <section id="contact" class="cta-container">
             <h2>STATUS: OPEN FOR RESEARCH COLLABORATION</h2>
             <p>Actively seeking academic partnerships, joint research initiatives, and doctoral / policy research opportunities at the intersection of deep tech law and cybersecurity governance.</p>
@@ -1123,10 +1124,10 @@
                 <span class="meta-mono">// DIRECT COMMUNICATION CHANNELS</span>
                 
                 <div class="contact-buttons-row">
-                    <a href="mailto:contact@wilkolaski.com?subject=Research%20Collaboration%20Inquiry" class="cta-btn">
+                    <a href="mailto:wiktor042004@gmail.com?subject=Research%20Collaboration%20Inquiry" class="cta-btn">
                         &gt; SEND INQUIRY VIA EMAIL
                     </a>
-                    <button type="button" class="cta-btn js-action-copy" data-email="contact@wilkolaski.com">
+                    <button type="button" class="cta-btn js-action-copy" data-email="wiktor042004@gmail.com">
                         &gt; COPY EMAIL ADDRESS
                     </button>
                 </div>
@@ -1140,7 +1141,7 @@
     <footer>
         <div class="footer-layout">
             <div>
-                <strong>Contact:</strong> <a href="#contact">Direct Inquiry</a> | <a href="mailto:contact@wilkolaski.com">contact@wilkolaski.com</a>
+                <strong>Contact:</strong> <a href="#contact">Direct Inquiry</a> | <a href="mailto:wiktor042004@gmail.com">wiktor042004@gmail.com</a>
                 <br>
                 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/wiktor-wilko%C5%82aski-183476325" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">wiktor-wilkolaski ↗</a>
             </div>
