@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Wiktor Wilkołaski, a Deep Tech Law & Regulatory Engineering Researcher.">
     <meta name="author" content="Wiktor Wilkołaski">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
     
@@ -141,7 +142,7 @@
         .blinking-cursor {
             font-weight: 400;
             color: var(--accent-green);
-            animation: blink 1s step-end infinite;
+            animation: blink 1s step-end 4 forwards; /* WCAG 2.2.2: Wygaszenie ciągłego migania */
         }
         @keyframes blink { 50% { opacity: 0; } }
 
@@ -224,10 +225,21 @@
             border-color: var(--text-primary);
         }
 
+        /* Dominacja Primary CTA dla Academic CV w nagłówku */
         .header-badge-link.badge-highlight {
-            border-color: var(--text-primary);
+            border: 1px solid var(--text-primary);
             font-weight: bold;
-            background-color: var(--surface-bg);
+            background-color: var(--text-primary);
+            color: var(--bg);
+        }
+
+        .header-badge-link.badge-highlight:hover {
+            background-color: transparent;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle-btn {
+            border-style: dashed;
         }
 
         .nav-links { 
@@ -251,8 +263,8 @@
         .nav-links a:hover, .nav-links a:focus-visible { 
             background-color: var(--surface-bg); 
             color: var(--text-primary); 
-            border-bottom-color: var(--text-primary);
-            text-decoration: none;
+            border-bottom-color: var(--text-primary); 
+            text-decoration: none; 
         }
 
         .intro-grid {
@@ -286,7 +298,7 @@
             display: inline-flex; 
             align-items: center; 
             min-height: 44px;
-            padding: 12px 20px;
+            padding: 12px 20px; 
             font-weight: bold; 
             text-decoration: none; 
             border-left: 3px solid var(--text-primary); 
@@ -484,9 +496,11 @@
             box-shadow: 4px 4px 0px rgba(0,0,0,0.06); 
         }
         
+        /* Proporcje 3:2 skorelowane z width/height w HTML - eliminacja CLS */
         .fieldwork-img { 
             width: 100%; 
-            height: 200px; 
+            height: auto; 
+            aspect-ratio: 3 / 2;
             object-fit: cover; 
             display: block; 
             transition: transform 0.3s ease; 
@@ -549,12 +563,14 @@
             font-family: var(--font-mono);
             font-size: 0.8em;
             font-weight: bold;
-            padding: 6px 12px;
+            padding: 8px 14px;
             cursor: pointer;
             margin-top: 10px;
-            min-height: 38px;
+            min-height: 44px; /* Pełne 44px dotykowe zgodnie z WCAG */
             transition: all 0.15s ease;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .collapse-btn:hover {
@@ -609,7 +625,7 @@
             max-height: 82vh; 
             border: 1px solid var(--text-primary); 
             box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-            display: block;
+            display: block; 
         }
         
         .lightbox-caption-container { 
@@ -643,8 +659,8 @@
 
         .lightbox-close:hover, .lightbox-close:focus-visible { 
             transform: scale(1.05); 
-            background-color: var(--text-primary);
-            color: var(--bg);
+            background-color: var(--text-primary); 
+            color: var(--bg); 
         }
 
         footer { 
@@ -725,7 +741,7 @@
 
     <header class="header-container">
         <div>
-            <h1>Wiktor Wilkołaski<span class="blinking-cursor">_</span></h1>
+            <h1>Wiktor Wilkołaski<span class="blinking-cursor" aria-hidden="true">_</span></h1>
             <div class="meta-mono">Researcher in Technology Law, Information Security Governance & Applied Cryptographic Policy</div>
             <div class="motto-text">// WHO DARES WINS</div>
             <div class="header-badges">
@@ -785,7 +801,7 @@
 
         <section id="experience">
             <h2>Professional & Legislative Experience</h2>
-            <ul class="content-list">
+            <ul class="content-list" role="list">
                 <li>
                     <strong>Government Legislation Centre (Rządowe Centrum Legislacji - RCL)</strong><br>
                     <span class="meta-mono">Legislative Intern | Department of Digital Affairs (Warsaw, 07.2025–08.2025)</span><br>
@@ -824,7 +840,7 @@
             <p>
                 Rather than analyzing retroactive case law, my research focus is predictive, empirical, and stress-test-driven, concentrating on four primary pillars:
             </p>
-            <ul class="content-list">
+            <ul class="content-list" role="list">
                 <li>
                     <strong>Comparative Architectures of Cyber-Governance & Sovereign Tech:</strong> Conducting comparative, multijurisdictional analyses of primary statutory sources, national security mandates, and regulatory baselines across leading global technological blocks (EU NIS2/CRA, US Presidential EOs/NIST Standards, PRC TC260/CSL/DSL/MLPS 2.0). Stress-testing sovereign frameworks against post-quantum cryptographic disruption.
                 </li>
@@ -851,7 +867,7 @@
                 Preprints, slides, and conference papers are indexed upon formal presentation, acceptance, or the expiration of publisher embargoes.
             </div>
 
-            <ul class="content-list">
+            <ul class="content-list" role="list">
                 <li>
                     <span class="status-badge status-completed">[ PUBLISHED ]</span><br>
                     <strong>Wilkołaski, W.</strong> (Corresponding Author), & Badźmirowska-Masłowska, K., "Quantum Cybercrime: Challenges in the Age of Advancing Quantum Computing Across the European Union, United States of America, and People's Republic of China."
@@ -925,7 +941,7 @@
             
             <div class="fieldwork-grid">
                 
-                <!-- LOG_01: Zweryfikowany zasób działający poprawnie -->
+                <!-- LOG_01 -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge War Studies University conferment photograph">
                         <img src="war-studies-university-warsaw-2026.jpg" alt="War Studies University Conferment Ceremony" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -941,11 +957,10 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_02: NAPRAWIONO - bezpośrednia ścieżka do rzeczywistego pliku kebab-case w repozytorium -->
+                <!-- LOG_02: Czysty znacznik bez inline onerror (CSP Compliant) -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge academic ceremony stage photograph">
                         <img src="academic-ceremony-warsaw-2026.jpg" 
-                             onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='academic%20ceremony%20warsaw%202026.jpg';}"
                              alt="Official academic ceremony stage in Warsaw" 
                              class="fieldwork-img" 
                              width="600" 
@@ -964,7 +979,7 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_03: Zweryfikowany zasób działający poprawnie -->
+                <!-- LOG_03 -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge medal artifact inspection view">
                         <img src="tadeusz-kutrzeba-medal-artifact.jpg" alt="Tadeusz Kutrzeba Commemorative Medal Artifact" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -980,7 +995,7 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_04: Zweryfikowany zasób działający poprawnie -->
+                <!-- LOG_04 -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Tilburg University conference site photograph">
                         <img src="tilburg-university-conference.jpg" alt="Tilburg University Campus Flags" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -996,7 +1011,7 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_05: Zweryfikowany zasób działający poprawnie -->
+                <!-- LOG_05 -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge SciSec presentation site photograph">
                         <img src="wuhan-university-scisec-2025.jpg" alt="Wuhan University Presentation Site for SciSec" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -1034,11 +1049,10 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_06: NAPRAWIONO - bezpośrednia ścieżka do rzeczywistego pliku w repozytorium z kaskadą awaryjną -->
+                <!-- LOG_06: Czysty znacznik bez inline onerror (CSP Compliant) -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge Wuhan NCC base photograph">
                         <img src="wuhan-ncc-base-2025.jpg" 
-                             onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='wuhan%20ncc%20base%202025.jpg';}else if(this.dataset.retry==1){this.dataset.retry=2;this.src='5f678233-34a4-4ec5-8655-22e0eecb2567.jpg';}else if(this.dataset.retry==2){this.dataset.retry=3;this.src='14e4acad-bc22-47c9-9234-aff8cfb998c4.jpg';}"
                              alt="National Cybersecurity Talent and Innovation Base in Wuhan" 
                              class="fieldwork-img" 
                              width="600" 
@@ -1057,7 +1071,7 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_07: Zweryfikowany zasób działający poprawnie -->
+                <!-- LOG_07 -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven keynote auditorium photograph">
                         <img src="ku-leuven-ifip-2026-keynote.jpg" alt="KU Leuven Lecture Hall Keynote Session" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -1073,11 +1087,10 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_08: NAPRAWIONO - bezpośrednia ścieżka do rzeczywistego pliku kebab-case w repozytorium -->
+                <!-- LOG_08: Czysty znacznik bez inline onerror (CSP Compliant) -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge KU Leuven defense presentation photograph">
                         <img src="ku-leuven-ifip-2026-presentation.jpg" 
-                             onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='ku%20leuven%20ifip%202026%20presentation.jpg';}"
                              alt="Presentation Session at KU Leuven" 
                              class="fieldwork-img" 
                              width="600" 
@@ -1096,7 +1109,7 @@
                     </figcaption>
                 </figure>
 
-                <!-- LOG_09: Zweryfikowany zasób działający poprawnie -->
+                <!-- LOG_09 -->
                 <figure>
                     <button type="button" class="img-btn-wrapper js-lightbox-trigger" aria-haspopup="dialog" title="Click to enlarge official speaker credential view">
                         <img src="ku-leuven-ifip-2026-artifact.jpg" alt="Official Delegate Badge and Terminal at KU Leuven" class="fieldwork-img" width="600" height="400" loading="lazy" decoding="async">
@@ -1164,6 +1177,37 @@
     </dialog>
 
     <script>
+        // Centralny, zgodny z CSP kontroler fallbacków obrazów (zastępuje podatne inline onerror)
+        (function() {
+            const fallbackMap = {
+                'academic-ceremony-warsaw-2026.jpg': ['academic%20ceremony%20warsaw%202026.jpg'],
+                'wuhan-ncc-base-2025.jpg': [
+                    'wuhan%20ncc%20base%202025.jpg',
+                    '5f678233-34a4-4ec5-8655-22e0eecb2567.jpg',
+                    '14e4acad-bc22-47c9-9234-aff8cfb998c4.jpg'
+                ],
+                'ku-leuven-ifip-2026-presentation.jpg': ['ku%20leuven%20ifip%202026%20presentation.jpg']
+            };
+
+            window.addEventListener('error', function(e) {
+                const target = e.target;
+                if (target && target.tagName && target.tagName.toLowerCase() === 'img') {
+                    const originalSrc = target.getAttribute('src');
+                    const cleanName = originalSrc ? originalSrc.split('/').pop() : '';
+                    
+                    if (fallbackMap[cleanName]) {
+                        const attempts = parseInt(target.dataset.fallbackAttempt || '0', 10);
+                        const fallbacks = fallbackMap[cleanName];
+                        
+                        if (attempts < fallbacks.length) {
+                            target.dataset.fallbackAttempt = (attempts + 1).toString();
+                            target.src = fallbacks[attempts];
+                        }
+                    }
+                }
+            }, true);
+        })();
+
         document.addEventListener('DOMContentLoaded', function() {
             
             // Kontroler przełącznika motywów
@@ -1201,13 +1245,21 @@
                 });
             });
 
-            // Kontroler przycisku powrotu na górę
+            // Kontroler przycisku powrotu na górę z buforowaniem requestAnimationFrame (ochrona INP)
             const backToTopBtn = document.getElementById('back-to-top');
+            let isTicking = false;
+
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 400) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
+                if (!isTicking) {
+                    window.requestAnimationFrame(function() {
+                        if (window.scrollY > 400) {
+                            backToTopBtn.classList.add('visible');
+                        } else {
+                            backToTopBtn.classList.remove('visible');
+                        }
+                        isTicking = false;
+                    });
+                    isTicking = true;
                 }
             }, { passive: true });
 
@@ -1229,7 +1281,6 @@
 
                     lastFocusedElement = this;
                     
-                    // Bezpieczne czyszczenie kontenera potomnego
                     while (imgWrapper.firstChild) {
                         imgWrapper.removeChild(imgWrapper.firstChild);
                     }
@@ -1237,14 +1288,12 @@
                         captionElement.removeChild(captionElement.firstChild);
                     }
 
-                    // Bezpieczne tworzenie i wstrzykiwanie węzła obrazu z aktualnego źródła
                     const modalImg = document.createElement('img');
                     modalImg.src = sourceImg.currentSrc || sourceImg.src;
                     modalImg.alt = sourceImg.getAttribute('alt') || 'Fieldwork inspection artifact';
                     modalImg.className = 'lightbox-img';
                     imgWrapper.appendChild(modalImg);
 
-                    // Klonowanie podpisu bez użycia innerHTML
                     const parentFigure = this.closest('figure');
                     if (parentFigure) {
                         const shortCaption = parentFigure.querySelector('.short-caption');
