@@ -9,6 +9,13 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
     
+    <!-- Bezpieczeństwo i ochrona nagłówkowa na poziomie meta -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/">
+
     <!-- Open Graph Metadata -->
     <meta property="og:title" content="Wiktor Wilkołaski | Tech Law & Cybersecurity Researcher">
     <meta property="og:description" content="Portfolio of Wiktor Wilkołaski, a Deep Tech Law & Regulatory Engineering Researcher.">
@@ -28,6 +35,31 @@
     
     <!-- Wektorowy Favicon Terminalowy -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23121212'/><text x='5' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%234ade80'>&gt;_</text></svg>">
+
+    <!-- Dane strukturalne Schema.org / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Wiktor Wilkołaski",
+        "url": "https://wiktorwilkolaski.github.io/Wiktor-Wilkolaski/",
+        "jobTitle": "Researcher in Technology Law, Information Security Governance & Applied Cryptographic Policy",
+        "sameAs": [
+            "https://orcid.org/0009-0003-7810-9073",
+            "https://www.linkedin.com/in/wiktor-wilko%C5%82aski-183476325"
+        ],
+        "affiliation": [
+            {
+                "@type": "Organization",
+                "name": "War Studies University"
+            },
+            {
+                "@type": "Organization",
+                "name": "SAVE THE CLICK Foundation"
+            }
+        ]
+    }
+    </script>
 
     <!-- Synchroniczny Skrypt Anty-FOUC -->
     <script>
@@ -103,6 +135,31 @@
             clip: rect(0, 0, 0, 0);
             white-space: nowrap;
             border: 0;
+        }
+
+        /* Skip link dla ułatwionej nawigacji klawiaturą (WCAG 2.4.1) */
+        .skip-link:focus {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            width: auto;
+            height: auto;
+            padding: 10px 16px;
+            background-color: var(--text-primary);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            font-weight: bold;
+            z-index: 10000;
+            clip: auto;
+            white-space: normal;
+            text-decoration: none;
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        main:focus {
+            outline: none;
         }
 
         p, .content-list li { 
@@ -297,7 +354,7 @@
             margin: 0; 
             display: inline-flex; 
             align-items: center; 
-            min-height: 44px;
+            min-height: 44px; 
             padding: 12px 20px; 
             font-weight: bold; 
             text-decoration: none; 
@@ -500,7 +557,7 @@
         .fieldwork-img { 
             width: 100%; 
             height: auto; 
-            aspect-ratio: 3 / 2;
+            aspect-ratio: 3 / 2; 
             object-fit: cover; 
             display: block; 
             transition: transform 0.3s ease; 
@@ -712,7 +769,7 @@
                 max-width: 100%; 
             }
             .header-badges, .theme-toggle-btn, .back-to-top-btn, 
-            .lightbox-dialog, .collapse-btn, .contact-actions-wrapper { 
+            .lightbox-dialog, .collapse-btn, .contact-actions-wrapper, .skip-link { 
                 display: none !important; 
             }
             a { border-bottom: none !important; color: #000000 !important; }
@@ -738,6 +795,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Dostępność WCAG 2.4.1: Ominięcie bloków powtarzalnych -->
+    <a href="#main-content" class="sr-only skip-link">Skip to main content</a>
 
     <header class="header-container">
         <div>
@@ -766,7 +826,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         
         <section class="intro-grid" id="bio" aria-labelledby="bio-heading">
             <div>
@@ -1170,14 +1230,14 @@
 
     <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑ TOP</button>
 
-    <dialog id="lightbox-dialog" class="lightbox-dialog" aria-label="Image inspection viewer">
+    <dialog id="lightbox-dialog" class="lightbox-dialog" aria-modal="true" aria-label="Image inspection viewer">
         <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&times;</button>
         <div id="lightbox-img-wrapper"></div> 
         <div class="lightbox-caption-container" id="lightbox-caption"></div>
     </dialog>
 
     <script>
-        // Centralny, zgodny z CSP kontroler fallbacków obrazów (zastępuje podatne inline onerror)
+        // Centralny kontroler fallbacków obrazów (zachowane oryginalne mapowania ścieżek)
         (function() {
             const fallbackMap = {
                 'academic-ceremony-warsaw-2026.jpg': ['academic%20ceremony%20warsaw%202026.jpg'],
